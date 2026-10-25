@@ -4388,6 +4388,12 @@
 		(uuid "47a23173-a129-4ffa-81ab-b313d0780bd8")
 	)
 	(junction
+		(at 312.42 468.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4851bb99-8b77-4fb1-8670-27b3763e9d4b")
+	)
+	(junction
 		(at 234.95 351.79)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4959,6 +4965,16 @@
 	)
 	(wire
 		(pts
+			(xy 312.42 468.63) (xy 312.42 471.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1280fa2c-7f6e-4bb3-9b31-de701fdcd8a3")
+	)
+	(wire
+		(pts
 			(xy 55.88 135.89) (xy 57.15 135.89)
 		)
 		(stroke
@@ -5296,16 +5312,6 @@
 			(type default)
 		)
 		(uuid "27c72445-46c0-490d-ae70-12254637c1ef")
-	)
-	(wire
-		(pts
-			(xy 44.45 189.23) (xy 44.45 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "28412b73-5b01-485f-86fe-1f8bf3186c4a")
 	)
 	(wire
 		(pts
@@ -5939,16 +5945,6 @@
 	)
 	(wire
 		(pts
-			(xy 311.15 468.63) (xy 330.2 468.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "552ebd8a-e740-40e7-b7e7-ed45f8a328ad")
-	)
-	(wire
-		(pts
 			(xy 39.37 143.51) (xy 41.91 143.51)
 		)
 		(stroke
@@ -6549,6 +6545,16 @@
 	)
 	(wire
 		(pts
+			(xy 44.45 196.85) (xy 44.45 198.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82c40066-6258-48be-a1f2-bea2fc97bc01")
+	)
+	(wire
+		(pts
 			(xy 255.27 25.4) (xy 261.62 25.4)
 		)
 		(stroke
@@ -7129,6 +7135,16 @@
 	)
 	(wire
 		(pts
+			(xy 311.15 468.63) (xy 312.42 468.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab36fa3a-5cee-4fd2-a9f7-0ff1ae2998d3")
+	)
+	(wire
+		(pts
 			(xy 44.45 158.75) (xy 44.45 154.94)
 		)
 		(stroke
@@ -7636,6 +7652,16 @@
 			(type default)
 		)
 		(uuid "d3959e37-b839-49ca-a496-6790aa0bf7b9")
+	)
+	(wire
+		(pts
+			(xy 312.42 468.63) (xy 330.2 468.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3bd2cc6-daa9-4d7a-a94b-96dd33b7bd61")
 	)
 	(wire
 		(pts
@@ -13982,6 +14008,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 312.42 478.79 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3b787ea5-ae0f-4a34-a21a-8c231ac0a013")
+		(property "Reference" "#PWR037"
+			(at 312.42 485.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 312.42 483.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "BC4AAB:BAT_BC4AAB"
+			(at 312.42 478.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 312.42 478.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 312.42 478.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e9608bf9-4a57-403e-9b83-13aab33be892")
+		)
+		(instances
+			(project "Synchronous Rectifier"
+				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
+					(reference "#PWR037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 93.98 135.89 0)
 		(unit 1)
@@ -15795,6 +15899,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_US")
+		(at 44.45 193.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "593251a3-a425-4788-9d40-807ab0c244d3")
+		(property "Reference" "R8"
+			(at 46.99 191.7699 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 46.99 194.3099 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Array_SIP4"
+			(at 45.466 193.294 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 44.45 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 44.45 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a6584469-be4e-4985-9704-87701caed117")
+		)
+		(pin "1"
+			(uuid "753e87f2-0199-4a56-b9c3-4c68dd0d7592")
+		)
+		(instances
+			(project "Synchronous Rectifier"
+				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 332.74 332.74 0)
 		(mirror y)
@@ -17482,6 +17668,88 @@
 			(project "Synchronous Rectifier"
 				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
 					(reference "TP21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 312.42 474.98 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7630326c-3fe6-4660-9bea-e6aea898b72b")
+		(property "Reference" "C9"
+			(at 316.23 473.7099 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 316.23 476.2499 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_QFP:TQFP-44_10x10mm_P0.8mm"
+			(at 313.3852 478.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 312.42 474.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 312.42 474.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "f5e6e35f-b358-4b93-ad01-974b341f03cf")
+		)
+		(pin "1"
+			(uuid "6e0db8dc-960b-43f1-8d2a-bacbe84586c4")
+		)
+		(instances
+			(project "Synchronous Rectifier"
+				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
+					(reference "C9")
 					(unit 1)
 				)
 			)
