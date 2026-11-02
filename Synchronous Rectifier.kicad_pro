@@ -661,7 +661,7 @@
         "uuid": "ebb6f210-1c97-44e9-a0ea-32505cd2d023"
       }
     ],
-    "used_designators": "Q1-4,#PWR18,#PWR37,#PWR42,#PWR46,BT1,R8,R11,R13,J1,ReceiverCoil1,C9,C16,C26,U4,D3-4",
+    "used_designators": "Q1-6,BT1,#PWR18,#PWR37,#PWR42,#PWR46,J1,R8,R11,R13,ReceiverCoil1,C9,C16,C26,U4,D3-4",
     "variants": []
   },
   "sheets": [
