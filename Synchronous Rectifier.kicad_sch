@@ -278,306 +278,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "ADA4817-1ARDZ-R7:ADA4817-1ARDZ-R7"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "IC"
-				(at 21.59 7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Value" "ADA4817-1ARDZ-R7"
-				(at 21.59 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "SOIC127P600X175-9N"
-				(at 21.59 -94.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4817-1_4817-2.pdf"
-				(at 21.59 -194.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Description" "Op Amp Single Low Noise Amplifier +/-5V/10V 8-Pin SOIC N EP T/R"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Height" "1.75"
-				(at 21.59 -394.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Mouser Part Number" "584-ADA4817-1ARDZ-R7"
-				(at 21.59 -494.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Analog-Devices/ADA4817-1ARDZ-R7?qs=BpaRKvA4VqHC4EHSVnlDDA%3D%3D"
-				(at 21.59 -594.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Manufacturer_Name" "Analog Devices"
-				(at 21.59 -694.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Manufacturer_Part_Number" "ADA4817-1ARDZ-R7"
-				(at 21.59 -794.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(symbol "ADA4817-1ARDZ-R7_1_1"
-				(rectangle
-					(start 5.08 2.54)
-					(end 20.32 -15.24)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 0 0 0)
-					(length 5.08)
-					(name "FB"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 0)
-					(length 5.08)
-					(name "-IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 0)
-					(length 5.08)
-					(name "+IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -7.62 0)
-					(length 5.08)
-					(name "-VS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -7.62 180)
-					(length 5.08)
-					(name "NIC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -5.08 180)
-					(length 5.08)
-					(name "OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -2.54 180)
-					(length 5.08)
-					(name "+VS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 0 180)
-					(length 5.08)
-					(name "~{PD}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -20.32 90)
-					(length 5.08)
-					(name "EP"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "BC4AAB:BC4AAB"
 			(pin_names
 				(offset 1.016)
@@ -3367,6 +3067,240 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "OPA656UB/2K5:OPA656UB_2K5_COMPACT"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 12.7 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "OPA656UB/2K5"
+				(at 12.7 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OPA656UB/2K5:D8"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/gpn/opa656"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "OPA656 230 MHz FET-input op amp, SOIC-8 (D), compact symbol: 2 -IN, 3 +IN, 4 V-, 6 OUT, 7 V+, 1/5/8 NC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "D8 D8-M D8-L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "OPA656UB_2K5_COMPACT_0_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 20.32 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "OPA656UB_2K5_COMPACT_1_1"
+				(pin unspecified line
+					(at 0 0 0)
+					(length 5.08)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "-IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "+IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 0)
+					(length 5.08)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 25.4 -7.62 180)
+					(length 5.08)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 25.4 -5.08 180)
+					(length 5.08)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 25.4 -2.54 180)
+					(length 5.08)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 25.4 0 180)
+					(length 5.08)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "SN74LV4046A:SN74LV4046AD"
 			(pin_names
 				(offset 0.254)
@@ -5099,12 +5033,6 @@
 		(uuid "14c43bec-6154-45d3-a142-b8b43b5c70ba")
 	)
 	(junction
-		(at 85.09 148.59)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1798d915-5030-4a9e-8e17-8a13f5882e9b")
-	)
-	(junction
 		(at 255.27 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5645,20 +5573,26 @@
 		(uuid "f647b785-60de-465c-91b1-6af351cafe32")
 	)
 	(junction
-		(at 82.55 140.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f8e325b9-a77e-4ce0-8070-942303da76f6")
-	)
-	(junction
 		(at 227.33 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fc29a36b-3334-49c5-bcb4-871bd029ae88")
 	)
 	(no_connect
+		(at 57.15 146.05)
+		(uuid "7ae25e5c-6eab-4595-bd5f-9697c222e57f")
+	)
+	(no_connect
 		(at 254 109.22)
 		(uuid "96267067-dc2e-4794-844c-02040b65ea48")
+	)
+	(no_connect
+		(at 82.55 153.67)
+		(uuid "c63363b7-a251-41df-a90a-e1ee1b1cb7c7")
+	)
+	(no_connect
+		(at 82.55 146.05)
+		(uuid "f09676f3-3b58-4126-a8cc-3b43c9f93b66")
 	)
 	(wire
 		(pts
@@ -5769,16 +5703,6 @@
 			(type default)
 		)
 		(uuid "08bc3137-09ec-4edb-94be-6ed466ec9841")
-	)
-	(wire
-		(pts
-			(xy 86.36 148.59) (xy 85.09 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0a261b35-cfe4-4e39-8768-f620a61e0c70")
 	)
 	(wire
 		(pts
@@ -5899,16 +5823,6 @@
 			(type default)
 		)
 		(uuid "1280fa2c-7f6e-4bb3-9b31-de701fdcd8a3")
-	)
-	(wire
-		(pts
-			(xy 55.88 146.05) (xy 57.15 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12ccd135-a7dc-4749-9451-a721234e6b94")
 	)
 	(wire
 		(pts
@@ -6382,16 +6296,6 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 146.05) (xy 85.09 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "303b8050-4bc6-432a-a0fc-c0f2ac908e11")
-	)
-	(wire
-		(pts
 			(xy 285.75 228.6) (xy 302.26 228.6)
 		)
 		(stroke
@@ -6619,16 +6523,6 @@
 			(type default)
 		)
 		(uuid "3e2cb715-3d82-4bc4-a9aa-e69dc91a1ba0")
-	)
-	(wire
-		(pts
-			(xy 69.85 170.18) (xy 69.85 166.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3f3cacd9-8caa-466d-91d6-9a6ac514fdf3")
 	)
 	(wire
 		(pts
@@ -6969,16 +6863,6 @@
 			(type default)
 		)
 		(uuid "56707de5-05ac-49ba-af0d-38d00745627d")
-	)
-	(wire
-		(pts
-			(xy 82.55 140.97) (xy 55.88 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5706883c-bb3c-4656-9677-c72efc54599b")
 	)
 	(wire
 		(pts
@@ -7352,7 +7236,7 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 148.59) (xy 82.55 148.59)
+			(xy 82.55 148.59) (xy 86.36 148.59)
 		)
 		(stroke
 			(width 0)
@@ -7882,16 +7766,6 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 146.05) (xy 85.09 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "98a4fab5-a3a7-42da-b251-6a851b598345")
-	)
-	(wire
-		(pts
 			(xy 55.88 205.74) (xy 55.88 208.28)
 		)
 		(stroke
@@ -8129,16 +8003,6 @@
 			(type default)
 		)
 		(uuid "a8363e6f-0189-459f-b299-a509039f6b01")
-	)
-	(wire
-		(pts
-			(xy 55.88 140.97) (xy 55.88 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a86d1648-f3e5-448d-8f8a-e62b1f6b7405")
 	)
 	(wire
 		(pts
@@ -14853,7 +14717,7 @@
 		)
 	)
 	(symbol
-		(lib_id "ADA4817-1ARDZ-R7:ADA4817-1ARDZ-R7")
+		(lib_id "OPA656UB/2K5:OPA656UB_2K5_COMPACT")
 		(at 57.15 146.05 0)
 		(unit 1)
 		(body_style 1)
@@ -14874,7 +14738,7 @@
 				)
 			)
 		)
-		(property "Value" "ADA4817-1ARDZ-R7"
+		(property "Value" "OPA656UB/2K5"
 			(at 69.85 140.97 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14884,7 +14748,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ADA4817:SOIC127P600X175-9N"
+		(property "Footprint" "OPA656UB/2K5:D8"
 			(at 78.74 240.97 0)
 			(hide yes)
 			(show_name no)
@@ -14896,7 +14760,7 @@
 				(justify left top)
 			)
 		)
-		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4817-1_4817-2.pdf"
+		(property "Datasheet" "https://www.ti.com/lit/gpn/opa656"
 			(at 78.74 340.97 0)
 			(hide yes)
 			(show_name no)
@@ -14908,7 +14772,7 @@
 				(justify left top)
 			)
 		)
-		(property "Description" "Op Amp Single Low Noise Amplifier +/-5V/10V 8-Pin SOIC N EP T/R"
+		(property "Description" "OPA656 230 MHz FET-input op amp, SOIC-8 (D), compact symbol: 2 -IN, 3 +IN, 4 V-, 6 OUT, 7 V+, 1/5/8 NC"
 			(at 57.15 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -14979,32 +14843,29 @@
 				(justify left top)
 			)
 		)
-		(pin "6"
-			(uuid "9da4c6df-4816-4130-9aab-d8f52871a86a")
-		)
-		(pin "3"
-			(uuid "33f1adee-9e63-4ef7-b99e-03f35b30d084")
-		)
-		(pin "4"
-			(uuid "a25f647c-4c46-4028-ab73-11d2bebe0081")
-		)
 		(pin "1"
-			(uuid "be40ebbb-19fc-4665-8d95-d19303118865")
-		)
-		(pin "8"
-			(uuid "49368b73-3859-4b5a-a17a-7adf8cadb0d2")
-		)
-		(pin "7"
-			(uuid "0c9f9209-b01d-4522-9963-ba91918f6589")
+			(uuid "ecc160e1-12b3-49db-9e6d-62c1658145fe")
 		)
 		(pin "2"
-			(uuid "a0bf9f51-250b-4843-b184-2f29b39a5496")
+			(uuid "28e5673f-1e67-4274-89c4-62f6e4a47eb2")
 		)
-		(pin "9"
-			(uuid "fa7a2c44-5a1c-4040-9c48-9df99eb121fa")
+		(pin "3"
+			(uuid "01af8fae-f012-442b-a335-4b9c37255663")
+		)
+		(pin "4"
+			(uuid "5210b38f-e92b-4538-9761-f935eed226b0")
 		)
 		(pin "5"
-			(uuid "c1204161-0d88-450b-aa2c-6fed09882b99")
+			(uuid "8787424b-956d-4998-abf4-3dd66deb2f4b")
+		)
+		(pin "6"
+			(uuid "ce43d7c1-cabe-46e6-b995-019c8c9462de")
+		)
+		(pin "7"
+			(uuid "08e7c67b-2cf2-4de0-b0cd-d80e9635fc52")
+		)
+		(pin "8"
+			(uuid "3a80beb1-7aca-4d7d-801d-16ba287e269b")
 		)
 		(instances
 			(project "Synchronous Rectifier"
@@ -19394,83 +19255,6 @@
 			(project "Synchronous Rectifier"
 				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
 					(reference "#PWR057")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 69.85 170.18 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "72af230c-4b4f-47b5-9d61-2f2f28e56d33")
-		(property "Reference" "#PWR03"
-			(at 69.85 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 71.12 168.91 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 69.85 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 69.85 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 69.85 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e4dbc61d-1c3f-49c0-bd2e-8308b9bf2321")
-		)
-		(instances
-			(project "Synchronous Rectifier"
-				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
-					(reference "#PWR03")
 					(unit 1)
 				)
 			)
