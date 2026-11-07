@@ -1,0 +1,202 @@
+{
+  "schematic": "Synchronous Rectifier.kicad_sch",
+  "last_sync": "2026-11-07T05:21:22.411210+00:00",
+  "parts": {
+    "BC4AAB": {
+      "manufacturer": "MPD",
+      "description": "AA battery holders",
+      "value": "BC4AAB",
+      "references": [
+        "BT1"
+      ],
+      "status": "not_found",
+      "error": "No LCSC results for 'BC4AAB'",
+      "last_attempt": "2026-11-07T05:21:04.669904+00:00",
+      "failed_providers": [
+        "lcsc"
+      ]
+    },
+    "BAT46W": {
+      "file": "BAT46W_Diode_100V_150mA_Surface_Mount_SOD-123.pdf",
+      "manufacturer": "JSCJ",
+      "description": "Diode 100V 150mA Surface Mount SOD-123",
+      "value": "BAT46W",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/f97c8b3ccdb24c5ba21cb2c31ad9c922.pdf?productCode=C54110",
+      "downloaded_date": "2026-11-07T05:21:05.900325+00:00",
+      "source": "lcsc",
+      "lcsc": "C54110",
+      "status": "ok",
+      "references": [
+        "D2",
+        "D1"
+      ],
+      "size_bytes": 686889,
+      "verification": "unverified"
+    },
+    "MMSZ5231B": {
+      "manufacturer": "",
+      "description": "5.1 V 500 mW Zener, SOD-123 (bootstrap clamp, keeps GaN gate below 6 V)",
+      "value": "5V1",
+      "references": [
+        "D6",
+        "D5"
+      ],
+      "status": "error",
+      "error": "access refused (HTTP 403), check the API credentials: HTTPError: HTTP Error 403: Forbidden; distributor said: No matching LCSC result for 'MMSZ5231B' (closest: 'MMSZ5231BT1G', a different part)",
+      "last_attempt": "2026-11-07T05:21:11.325415+00:00"
+    },
+    "LM2776DBVR": {
+      "file": "LM2776DBVR_Switched_Capacitor_Inverter.pdf",
+      "manufacturer": "",
+      "description": "Switched Capacitor Inverter",
+      "value": "LM2776DBVR",
+      "datasheet_url": "http://www.ti.com/lit/gpn/lm2776",
+      "downloaded_date": "2026-11-07T05:21:13.576472+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "IC2"
+      ],
+      "size_bytes": 1476178,
+      "verification": "verified"
+    },
+    "ADA4817-1ARDZ-R7": {
+      "file": "ADA4817-1ARDZ-R7_OPA656_230_MHz_FET-input_op_amp_SOIC-8_(D)_compact_symbol_2_-IN_3_+IN_4.pdf",
+      "manufacturer": "",
+      "description": "OPA656 230 MHz FET-input op amp, SOIC-8 (D), compact symbol: 2 -IN, 3 +IN, 4 V-, 6 OUT, 7 V+, 1/5/8 NC",
+      "value": "OPA656UB/2K5",
+      "datasheet_url": "https://www.ti.com/lit/gpn/opa656",
+      "downloaded_date": "2026-11-07T05:21:13.978571+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "IC3"
+      ],
+      "size_bytes": 1730468,
+      "verification": "likely"
+    },
+    "XT60PW-M": {
+      "manufacturer": "AMASS",
+      "description": "Socket, DC supply, male, PIN: 2",
+      "value": "XT60PW-M",
+      "references": [
+        "J1"
+      ],
+      "status": "not_found",
+      "error": "No LCSC results for 'XT60PW-M'",
+      "last_attempt": "2026-11-07T05:21:14.463399+00:00",
+      "failed_providers": [
+        "lcsc"
+      ]
+    },
+    "EPC2305": {
+      "manufacturer": "EPC",
+      "description": "150 V 2.2 mohm eGaN FET",
+      "value": "EPC2305",
+      "references": [
+        "Q4",
+        "Q1",
+        "Q2",
+        "Q3"
+      ],
+      "status": "ok",
+      "last_attempt": "2026-11-07T05:21:15.705808+00:00",
+      "file": "EPC2305.pdf",
+      "datasheet_url": "https://epc-co.com/epc/Portals/0/epc/documents/datasheets/EPC2305_datasheet.pdf",
+      "size_bytes": 2183503,
+      "note": "downloaded earlier in session from Farnell mirror"
+    },
+    "Screw_Terminal_01x02": {
+      "manufacturer": "",
+      "description": "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)",
+      "value": "Screw_Terminal_01x02",
+      "references": [
+        "ReceiverCoil1"
+      ],
+      "status": "not_found",
+      "error": "No LCSC results for 'Screw_Terminal_01x02'",
+      "last_attempt": "2026-11-07T05:21:17.087689+00:00",
+      "failed_providers": [
+        "lcsc"
+      ]
+    },
+    "SI8274GB1-IS1R": {
+      "manufacturer": "Skyworks Solutions",
+      "description": "Si827x isolated half-bridge gate driver",
+      "value": "SI8274GB1-IS1R",
+      "references": [
+        "S1_Gate_Driver1",
+        "U9",
+        "U1"
+      ],
+      "status": "ok",
+      "last_attempt": "2026-11-07T05:21:18.180511+00:00",
+      "file": "SI8274GB1-IS1R.pdf",
+      "datasheet_url": "https://www.skyworksinc.com/-/media/Skyworks/SL/documents/public/data-sheets/si827x-datasheet.pdf",
+      "size_bytes": 841093,
+      "note": "downloaded earlier in session from Farnell mirror"
+    },
+    "74AHCT1G86": {
+      "file": "74AHCT1G86_Single_XOR_Gate_Low-Voltage_CMOS.pdf",
+      "manufacturer": "",
+      "description": "Single XOR Gate, Low-Voltage CMOS",
+      "value": "74AHCT1G86",
+      "datasheet_url": "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf",
+      "downloaded_date": "2026-11-07T05:21:20.375417+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "U11",
+        "U10"
+      ],
+      "size_bytes": 4521892,
+      "verification": "likely"
+    },
+    "TLV3601DBVR": {
+      "file": "TLV3601DBVR.pdf",
+      "manufacturer": "",
+      "description": "",
+      "value": "TLV3601DBVR",
+      "datasheet_url": "https://www.ti.com/lit/gpn/tlv3601",
+      "downloaded_date": "2026-11-07T05:21:21.091320+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "U2",
+        "U3"
+      ],
+      "size_bytes": 2460593,
+      "verification": "verified"
+    },
+    "TPS7A2550DRVR": {
+      "file": "TPS7A2550DRVR.pdf",
+      "manufacturer": "",
+      "description": "",
+      "value": "TPS7A2550DRVR",
+      "datasheet_url": "https://www.ti.com/lit/gpn/tps7a25",
+      "downloaded_date": "2026-11-07T05:21:21.528492+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "U4"
+      ],
+      "size_bytes": 3707142,
+      "verification": "unverified"
+    },
+    "SN74LV4046AD": {
+      "file": "SN74LV4046AD.pdf",
+      "manufacturer": "",
+      "description": "",
+      "value": "SN74LV4046AD",
+      "datasheet_url": "https://www.ti.com/lit/gpn/sn74lv4046a",
+      "downloaded_date": "2026-11-07T05:21:21.994905+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "VCO1"
+      ],
+      "size_bytes": 805480,
+      "verification": "verified"
+    }
+  }
+}

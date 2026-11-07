@@ -5078,6 +5078,12 @@
 		(uuid "1813d545-efbc-4c0a-aa6f-e0c5a6b98d2a")
 	)
 	(junction
+		(at 91.44 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "188adfad-c60c-4c86-ac94-4f733357d9ed")
+	)
+	(junction
 		(at 41.91 273.05)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5714,6 +5720,16 @@
 			(type default)
 		)
 		(uuid "0a5c8897-de33-4b08-bc15-31fa38652aad")
+	)
+	(wire
+		(pts
+			(xy 91.44 140.97) (xy 91.44 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b3550b3-3957-4c69-9c92-26b122835d67")
 	)
 	(wire
 		(pts
@@ -6467,6 +6483,16 @@
 	)
 	(wire
 		(pts
+			(xy 91.44 151.13) (xy 93.98 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45828e81-79c7-4623-9e24-0882185d0e39")
+	)
+	(wire
+		(pts
 			(xy 222.25 234.95) (xy 222.25 237.49)
 		)
 		(stroke
@@ -6897,7 +6923,7 @@
 	)
 	(wire
 		(pts
-			(xy 90.17 151.13) (xy 93.98 151.13)
+			(xy 90.17 151.13) (xy 91.44 151.13)
 		)
 		(stroke
 			(width 0)
@@ -8297,7 +8323,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 140.97) (xy 86.36 140.97)
+			(xy 82.55 140.97) (xy 91.44 140.97)
 		)
 		(stroke
 			(width 0)
@@ -9612,30 +9638,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "Is_FB"
-		(shape output)
-		(at 86.36 140.97 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "3c52f0f9-e68d-40bf-831e-3ddab131fd02")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 94.3043 140.97 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)
@@ -12313,7 +12315,7 @@
 				)
 			)
 		)
-		(property "Footprint" "xor:SOT95P280X145-5N"
+		(property "Footprint" "SN74AHCT1G86DBVR:DBV5"
 			(at 49.53 358.14 0)
 			(hide yes)
 			(show_name no)
@@ -19099,7 +19101,7 @@
 				)
 			)
 		)
-		(property "Footprint" "xor:SOT95P280X145-5N"
+		(property "Footprint" "SN74AHCT1G86DBVR:DBV5"
 			(at 241.3 300.99 0)
 			(hide yes)
 			(show_name no)
@@ -27187,7 +27189,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SN74LV4046AD:SOIC127P600X175-16N"
+		(property "Footprint" "SN74LV4046AD:D16"
 			(at 64.77 265.43 0)
 			(hide yes)
 			(show_name no)
