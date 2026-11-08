@@ -4,4 +4,4 @@ from collections import defaultdict
 b = pcbnew.LoadBoard(sys.argv[1]); L = defaultdict(float)
 for t in b.GetTracks():
     if t.GetClass() == 'PCB_TRACK': L[t.GetNetname()] += pcbnew.ToMM(t.GetLength())
-print(round(abs(L['Net-(IC3-+IN)'] - L['Net-(IC3--IN)']) + L['G2'] + L['G4'] + L['Net-(IC3-+IN)'] + L['Net-(U1-PWM)'] * 0.3, 1))
+print(round(abs(L['Net-(IC3-+IN)'] - L['Net-(IC3--IN)']) + 2 * L["G2"] + 2 * L["G4"] + L['Net-(IC3-+IN)'] + L['Net-(U1-PWM)'] * 0.3, 1))

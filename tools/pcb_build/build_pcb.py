@@ -443,6 +443,29 @@ def pair_testpoints(pitch=3.2):
 
 
 pair_testpoints()
+
+
+def fix_footprints():
+    """same repairs as in libs/: IC2 courtyard centre-cross -> F.Fab, U4 thermal pad 1.0 mm wide; hide every silkscreen
+    text that is not the reference (vendor footprints carry 'Designator..' / '*' texts that collide with everything)"""
+    ic2 = board.FindFootprintByReference('IC2')
+    for g in list(ic2.GraphicalItems()):
+        if g.GetLayer() in (pcbnew.F_CrtYd, pcbnew.B_CrtYd) and g.GetClass() == 'PCB_SHAPE' and pcbnew.ToMM(g.GetLength()) < 1.2:
+            g.SetLayer(pcbnew.F_Fab if g.GetLayer() == pcbnew.F_CrtYd else pcbnew.B_Fab)
+    for q in board.FindFootprintByReference('U4').Pads():
+        if q.GetNumber() == '7':
+            q.SetSize(pcbnew.VECTOR2I(FromMM(1.0), q.GetSize().y))
+    n = 0
+    for fp in board.GetFootprints():
+        for g in fp.GraphicalItems():
+            if g.GetClass() == 'PCB_TEXT' and g.GetLayer() in (pcbnew.F_SilkS, pcbnew.B_SilkS):
+                txt = g.GetText()
+                if txt.strip() == '*' or txt.startswith('Designator'):       # vendor pin-1 stars / designator placeholders -> Fab layer
+                    g.SetLayer(pcbnew.F_Fab if g.GetLayer() == pcbnew.F_SilkS else pcbnew.B_Fab); n += 1
+    print('  fix_footprints: removed/hid', n, 'stray silkscreen texts')
+
+
+fix_footprints()
 # flying cap of the charge pump: centred between its two pins, just outside the package
 p5, p6 = pad_xy('IC2', '5'), pad_xy('IC2', '6')
 icc = board.FindFootprintByReference('IC2').GetPosition()
@@ -516,7 +539,7 @@ for fp_ in board.GetFootprints():
             if p_.GetNetname() == 'GND':
                 p_.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
 # FET pads and the power caps get solid (no thermal relief) zone connections
-for ref in ('Q1', 'Q2', 'Q3', 'Q4', 'C19', 'C27', 'C28', 'C29', 'C30', 'C54', 'J1', 'C47', 'C1', 'C58'):
+for ref in ('Q1', 'Q2', 'Q3', 'Q4', 'C19', 'C27', 'C28', 'C29', 'C30', 'C54', 'J1', 'C47', 'C1', 'C58', 'C31'):   # C31: at the pour notch edge, only one thermal spoke fits
     for p in board.FindFootprintByReference(ref).Pads():
         p.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
 zone('Out+', (B, IN1), rect(83.0, 77.5, 106.0, 82.0), 4, solid=True)
@@ -917,51 +940,65 @@ pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 
 
 def place_refs():
-    """put each visible reference where it does not sit on pads, vias or other text"""
+    """put each reference where it sits on no pad / via / silkscreen graphic / other reference (0.8 mm text)"""
     def bbmm(bb):
         return (pcbnew.ToMM(bb.GetLeft()), pcbnew.ToMM(bb.GetTop()), pcbnew.ToMM(bb.GetRight()), pcbnew.ToMM(bb.GetBottom()))
-    def overlap(a, b, m=0.15):
+    def overlap(a, b, m=0.12):
         return a[0] - m < b[2] and b[0] - m < a[2] and a[1] - m < b[3] and b[1] - m < a[3]
-    obst = {F: [], B: []}
+    pads = {F: [], B: []}; silk = {F: [], B: []}
     for fp in board.GetFootprints():
         side = fp.GetLayer()
         for p in fp.Pads():
             r = bbmm(p.GetBoundingBox())
             if p.GetAttribute() == pcbnew.PAD_ATTRIB_SMD:
-                obst[side].append(r)
+                pads[side].append(r)
             else:
-                obst[F].append(r); obst[B].append(r)
+                pads[F].append(r); pads[B].append(r)
+        for g in fp.GraphicalItems():
+            if g.GetLayer() == pcbnew.F_SilkS:
+                silk[F].append(bbmm(g.GetBoundingBox()))
+            elif g.GetLayer() == pcbnew.B_SilkS:
+                silk[B].append(bbmm(g.GetBoundingBox()))
     for t in board.GetTracks():
         if isinstance(t, pcbnew.PCB_VIA):
             c = t.GetPosition(); x, y = pcbnew.ToMM(c.x), pcbnew.ToMM(c.y)
-            obst[F].append((x - 0.3, y - 0.3, x + 0.3, y + 0.3)); obst[B].append((x - 0.3, y - 0.3, x + 0.3, y + 0.3))
+            for side in (F, B):
+                pads[side].append((x - 0.35, y - 0.35, x + 0.35, y + 0.35))
     placed = {F: [], B: []}
+    unplaced = []
     for fp in sorted(board.GetFootprints(), key=lambda f: f.GetReference()):
         ref = fp.Reference()
         if not ref.IsVisible():
             continue
         side = fp.GetLayer()
-        w = len(fp.GetReference()) * 0.8 * 0.9 + 0.3; h = 1.0
+        ref.SetTextSize(pcbnew.VECTOR2I(FromMM(0.8), FromMM(0.8))); ref.SetTextThickness(FromMM(0.12))
+        ref.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_CENTER); ref.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
+        ref.SetTextAngleDegrees(0)
         fb = bbmm(fp.GetBoundingBox(False, False))
         cx, cy = pcbnew.ToMM(fp.GetPosition().x), pcbnew.ToMM(fp.GetPosition().y)
-        cands = [(cx, fb[1] - 0.5 - h / 2), (cx, fb[3] + 0.5 + h / 2), (fb[0] - 0.4 - w / 2, cy), (fb[2] + 0.4 + w / 2, cy),
-                 (fb[0] - 0.4 - w / 2, fb[1] - 0.5 - h / 2), (fb[2] + 0.4 + w / 2, fb[1] - 0.5 - h / 2),
-                 (fb[0] - 0.4 - w / 2, fb[3] + 0.5 + h / 2), (fb[2] + 0.4 + w / 2, fb[3] + 0.5 + h / 2)]
+        ref.SetPosition(P(cx, cy)); tb = bbmm(ref.GetBoundingBox()); w, h = tb[2] - tb[0], tb[3] - tb[1]
+        cands = []
+        for d in (0.35, 0.9, 1.6, 2.4, 3.2):
+            cands += [(cx, fb[1] - d - h / 2), (cx, fb[3] + d + h / 2), (fb[0] - d - w / 2, cy), (fb[2] + d + w / 2, cy),
+                      (fb[0] - d - w / 2, fb[1] - d - h / 2), (fb[2] + d + w / 2, fb[1] - d - h / 2),
+                      (fb[0] - d - w / 2, fb[3] + d + h / 2), (fb[2] + d + w / 2, fb[3] + d + h / 2)]
+            cands += [(cx - 1.5, fb[1] - d - h / 2), (cx + 1.5, fb[1] - d - h / 2), (cx - 1.5, fb[3] + d + h / 2), (cx + 1.5, fb[3] + d + h / 2)]
         best, bestn = None, 1e9
         for x, y in cands:
             r = (x - w / 2, y - h / 2, x + w / 2, y + h / 2)
-            if not (bx0 + 0.5 < r[0] and r[2] < bx1 - 0.5 and by0 + 0.5 < r[1] and r[3] < by1 - 0.5):
+            if not (bx0 + 0.6 < r[0] and r[2] < bx1 - 0.6 and by0 + 0.6 < r[1] and r[3] < by1 - 0.6):
                 continue
-            n = sum(1 for o in obst[side] if overlap(r, o)) + 3 * sum(1 for o in placed[side] if overlap(r, o))
+            n = 10 * sum(1 for o in pads[side] if overlap(r, o)) + 3 * sum(1 for o in silk[side] if overlap(r, o)) \
+                + 3 * sum(1 for o in placed[side] if overlap(r, o)) + 0.01 * math.hypot(x - cx, y - cy)
             if n < bestn:
                 best, bestn = (x, y, r), n
-            if n == 0:
+            if n < 0.05:
                 break
-        if best is None:
-            continue
         x, y, r = best
         ref.SetPosition(P(x, y)); placed[side].append(r)
-        ref.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_CENTER); ref.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
+        if bestn >= 3:                                   # no clean spot: hide the designator rather than print it over other silk
+            unplaced.append((fp.GetReference(), round(bestn, 1))); ref.SetVisible(False)
+    print('  place_refs: references hidden (no collision-free spot):', unplaced)
 
 
 place_refs()

@@ -3,6 +3,7 @@
 cd "$(dirname "$0")"
 PRJ="/c/Users/Vedant/Documents/KiCad/Guad_Rectifier/Synchronous Rectifier"
 S=/c/Users/Vedant/.claude/plugins/cache/kicad-happy/kicad-happy/3.0.1/skills
+if ! grep -q "best seed [0-9]" run_v30.out; then echo "NOT INSTALLED: build failed"; exit 0; fi
 if ! grep -q "Found 0 unconnected" v30.kicad_pcb.drc.rpt; then echo "NOT INSTALLED: unconnected items"; exit 0; fi
 bad=$(python -I drcsum.py v30.kicad_pcb.drc.rpt | grep "^\s*\[" | grep -v "silk\|U4\|IC2" | wc -l)
 if [ "$bad" != "0" ]; then echo "NOT INSTALLED: $bad unexpected DRC items"; python -I drcsum.py v30.kicad_pcb.drc.rpt | grep "^\s*\[" | grep -v "silk\|U4\|IC2"; exit 0; fi

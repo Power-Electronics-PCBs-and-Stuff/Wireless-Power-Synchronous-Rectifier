@@ -101,9 +101,9 @@
     "2026-11-08_1133": {
       "source_hashes": {
         "Synchronous Rectifier.kicad_sch": "sha256:cc176172e49f471c6869e69f51de13343c8fe53de4a82da6abb379be9b8627c1",
-        "Synchronous Rectifier.kicad_pcb": "sha256:0459de8a6a6396905c796ca2f545dda5732b8b5b5ebfa0a98d76c3003af7b201",
+        "Synchronous Rectifier.kicad_pcb": "sha256:323798264b389cf615144398948a5c0d19fd8a49a10e764462f3cf0ba3c7b40a",
         "schematic.json": "sha256:c737b9e4ad427142e20ba59f044e28ed9ec38bd56a093f7051d05f9881910848",
-        "pcb.json": "sha256:716f8b38fba5cc6c37e2466377a2b97973d5ddc274921d9966070d91349a8454"
+        "pcb.json": "sha256:f390b8cc6a8fc0ba510daf68c0ed07c5154a5f9f1e5b98962e76196e938171c5"
       },
       "outputs": {
         "schematic": "schematic.json",
@@ -115,7 +115,7 @@
       "scripts": {
         "pcb": "analyze_pcb.py Synchronous Rectifier.kicad_pcb"
       },
-      "generated": "2026-11-08T11:40:57-06:00",
+      "generated": "2026-11-08T14:32:14-06:00",
       "pinned": false
     }
   }
