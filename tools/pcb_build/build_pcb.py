@@ -14,7 +14,8 @@ board = pcbnew.LoadBoard(SRC)
 
 F, B, IN1, IN2 = pcbnew.F_Cu, pcbnew.B_Cu, pcbnew.In1_Cu, pcbnew.In2_Cu
 CU4 = (F, IN1, IN2, B)
-BOARD = dict(x0=65.1, y0=49.4, x1=216.0, y1=147.1, r=3.0)
+BOARD = dict(x0=65.1, y0=49.4, x1=216.0, y1=127.0, r=3.0)
+BUS = (83.0, 62.0, 86.5, 120.0)      # Out+ bus along the left edge (F/B/In1) from the bulk caps down to the XT60
 TANK = (89.0, 49.4, 124.0, 77.5)  # no copper pours under the resonant tank
 
 
@@ -58,13 +59,13 @@ def outline():
 
 
 outline()
-HOLES = [(68.7, 53.0), (146.4, 53.0), (212.4, 53.0), (68.6, 143.5), (146.4, 143.5), (212.4, 143.5)]
+HOLES = [(68.7, 53.0), (146.4, 53.0), (212.4, 53.0), (68.6, 123.4), (146.4, 123.4), (212.4, 123.4)]
 for i, (x, y) in enumerate(HOLES, 1):
     fp = pcbnew.FootprintLoad(r'C:\Program Files\KiCad\10.0\share\kicad\footprints\MountingHole.pretty', 'MountingHole_3.2mm_M3')
     fp.SetReference(f'H{i}'); fp.SetPosition(P(x, y)); fp.Reference().SetVisible(False); board.Add(fp)
 
 # three assembly fiducials around the SMD area
-for i, (x, y) in enumerate([(72.5, 56.5), (143.0, 56.5), (72.5, 140.0)], 1):
+for i, (x, y) in enumerate([(72.5, 56.5), (143.0, 56.5), (75.5, 120.5)], 1):
     fp = pcbnew.FootprintLoad('C:/Program Files/KiCad/10.0/share/kicad/footprints/Fiducial.pretty', 'Fiducial_1mm_Mask2mm')
     fp.SetReference(f'FID{i}'); fp.SetPosition(P(x, y)); fp.Reference().SetVisible(False); board.Add(fp)
 
@@ -72,9 +73,9 @@ for i, (x, y) in enumerate([(72.5, 56.5), (143.0, 56.5), (72.5, 140.0)], 1):
 PL = {
     # --- bridge
     'Q1': (104.0, 86.5, 0, F), 'Q3': (116.0, 86.5, 180, F), 'Q2': (104.0, 95.5, 180, F), 'Q4': (116.0, 95.5, 0, F),
-    'C28': (108.3, 91.0, 90, B), 'C29': (110.6, 91.0, 90, B), 'C30': (112.9, 91.0, 90, B), 'C54': (115.2, 91.0, 90, B),
-    'C19': (84.7, 80.1, 180, F), 'C27': (84.6, 98.5, 180, F),
-    'TP19': (104.0, 104.5, 0, F), 'TP22': (120.0, 101.4, 0, F),
+    'C28': (104.6, 91.0, 90, B), 'C29': (107.1, 91.0, 90, B), 'C30': (114.0, 91.0, 90, B), 'C54': (116.5, 91.0, 90, B),   # 2 per half bridge, under the FET columns
+    'C19': (84.7, 71.5, 180, F), 'C27': (84.6, 89.5, 180, F),
+    'TP19': (103.5, 103.6, 0, F), 'TP22': (119.4, 102.3, 0, F),
     # --- tank / input
     'ReceiverCoil1': (109.0, 62.0, 180, F),
     'C58': (91.5, 66.0, 90, F), 'C1': (91.5, 73.0, 90, F), 'C47': (121.0, 76.0, 90, F),
@@ -83,18 +84,18 @@ PL = {
     'S1_Gate_Driver1': (91.7, 93.5, 270, B), 'R41': (96.0, 100.6, 0, B), 'R42': (96.0, 102.4, 0, B),
     'R28': (96.0, 86.5, 0, B), 'C24': (96.0, 88.3, 0, B),
     'C21': (96.3, 104.5, 0, F), 'D5': (92.0, 104.5, 0, F), 'D1': (92.0, 107.0, 0, F), 'C61': (96.3, 107.0, 0, F), 'C52': (96.3, 109.0, 0, F),
-    'TP34': (100.8, 104.5, 0, F), 'TP36': (100.8, 108.0, 0, F),
+    'TP34': (97.6, 106.9, 0, F), 'TP36': (100.8, 108.0, 0, F),
     # --- S2 gate driver (B.Cu) + bootstrap column (F.Cu)
-    'U9': (128.7, 93.5, 90, B), 'R1': (131.9, 86.3, 0, B), 'R40': (125.5, 87.5, 90, B),
+    'U9': (128.7, 93.5, 90, B), 'R1': (131.9, 86.3, 180, B), 'R40': (125.5, 87.5, 90, B),   # R1 flipped: G2 pad on the left so the gate trace arrives along y~86.2 under C4/R45
     'R29': (131.5, 100.6, 0, B), 'C31': (131.5, 102.4, 0, B),
     'C23': (125.0, 84.5, 0, F), 'D6': (124.8, 88.5, 90, F), 'D2': (124.8, 93.5, 90, F), 'C62': (130.5, 98.0, 0, F), 'C53': (130.5, 96.0, 0, F),
-    'TP35': (128.8, 88.3, 0, F), 'TP37': (110.5, 101.6, 0, F),
+    'TP35': (126.2, 84.1, 0, F), 'TP37': (125.8, 102.3, 0, F),
     # --- current sense (top right)
     'R5': (124.3, 75.5, 0, F), 'R6': (127.5, 75.5, 0, F), 'R37': (130.7, 75.5, 0, F),
     'R2': (124.3, 78.0, 0, F), 'R3': (127.5, 78.0, 0, F), 'R4': (130.7, 78.0, 0, F),
-    'TP10': (125.5, 67.5, 0, F),
+    'TP10': (136.6, 78.0, 0, F),
     'IC3': (133.5, 81.5, 0, B), 'R43': (131.9, 83.5, 0, F), 'R44': (134.2, 79.5, 0, F),
-    'C4': (128.8, 84.5, 90, F), 'R45': (128.8, 84.5, -90, B), 'C5': (128.8, 80.5, 90, B), 'R46': (128.8, 80.5, -90, F),
+    'C4': (128.8, 83.9, 90, F), 'R45': (128.8, 83.9, -90, B), 'C5': (128.8, 80.5, 90, B), 'R46': (128.8, 80.5, -90, F),   # C4/R45 0.6 up: lane for the G2 gate trace
     'C12': (139.0, 83.3, 0, F), 'C48': (135.5, 84.5, 0, F),
     'IC2': (134.5, 74.5, 90, F), 'C40': (134.5, 70.5, 180, F), 'C38': (137.5, 74.5, 90, F), 'C39': (138.0, 76.5, 90, B),
     'C49': (128.5, 70.5, 0, F), 'TP18': (131.5, 67.5, 0, F),
@@ -104,12 +105,12 @@ PL = {
     # --- PLL / VCO (center bottom)
     'VCO1': (111.0, 108.0, 0, B), 'C14': (106.3, 105.0, -90, B), 'C33': (106.3, 108.5, 90, B), 'C13': (105.7, 111.5, 180, B),
     'C22': (111.5, 115.5, 0, B), 'R18': (111.1, 106.0, 0, F), 'R19': (111.1, 107.5, 0, F),
-    'R22': (115.6, 108.0, -90, B), 'R20': (115.6, 104.3, 90, B), 'C15': (114.8, 102.3, 0, F),
-    'TP25': (119.5, 110.0, 0, F), 'TP24': (104.5, 109.0, 0, F), 'TP26': (106.5, 115.0, 0, F), 'TP14_': None,
+    'R22': (115.6, 108.0, -90, B), 'R20': (115.6, 104.3, 90, B), 'C15': (113.5, 102.3, 0, F),
+    'TP25': (119.5, 110.0, 0, F), 'TP24': (97.0, 111.0, 0, F), 'TP26': (106.5, 115.0, 0, F), 'TP14_': None,
     'C17': (106.8, 101.5, 0, F),
     # --- virtual driver + feedback comparator
-    'U1': (126.0, 104.5, 0, F), 'R7': (116.8, 105.5, 0, F), 'C32': (116.8, 107.5, 0, F),
-    'C7': (131.5, 101.5, 90, F), 'C8': (131.5, 104.5, 90, F), 'R10': (135.5, 104.5, 90, F), 'C9': (134.2, 109.0, -90, F),
+    'U1': (131.4, 104.5, 0, F), 'R7': (116.8, 105.5, 0, F), 'C32': (116.8, 107.5, 0, F),
+    'C7': (131.5, 101.5, 90, F), 'C8': (131.5, 104.5, 90, F), 'R10': (139.3, 104.5, 90, F), 'C9': (140.3, 109.0, -90, F),
     'U2': (127.7, 112.5, 0, B), 'C6': (128.9, 109.5, 0, B), 'R47': (131.6, 112.5, 90, B), 'R51': (128.9, 115.5, 180, B), 'C18': (124.5, 109.5, 0, B),
     'TP7': (125.0, 118.5, 0, F),
     'U10': (101.0, 112.8, 0, F), 'C10': (101.0, 116.0, 0, F),
@@ -117,8 +118,8 @@ PL = {
     # --- LDO / battery / connectors / LEDs
     'U4': (146.0, 100.0, 0, F), 'C16': (146.0, 96.5, 0, F), 'C26': (146.0, 103.5, 0, F),
     'D3': (146.0, 107.0, 0, F), 'R11': (146.0, 109.5, 0, F),
-    'BT1': (183.5, 103.0, 180, F),
-    'J1': (89.0, 136.5, 0, F), 'D4': (97.0, 125.0, 0, F), 'R13': (93.0, 125.0, 0, F),
+    'BT1': (183.5, 88.5, 180, F),
+    'J1': (75.7, 108.0, -90, F), 'D4': (92.5, 117.5, 0, F), 'R13': (88.8, 117.5, 0, F),
     # --- GND test points
     'TP1': (138.9, 70.0, 0, F), 'TP2': (142.5, 97.0, 0, F), 'TP5': (104.9, 118.0, 0, F), 'TP9': (116.5, 120.0, 0, F),
     'TP13': (138.5, 100.0, 0, F), 'TP15': (92.0, 113.5, 0, F), 'TP16': (104.0, 124.0, 0, F), 'TP17': (93.5, 119.0, 0, F),
@@ -172,7 +173,9 @@ def _overlap(a, b):
 
 
 KEEP_RECTS = [(88.7, 74.0, 94.3, 84.0), (119.5, 77.0, 122.5, 86.0),   # 5 mm C1->S1 and 2.5 mm C47->S2 tank tracks
-              (98.0, 82.5, 102.6, 99.5), (117.4, 85.3, 122.0, 99.5), (105.5, 79.5, 114.5, 90.0), (102, 79.5, 118, 82.0), (83, 76.5, 86.5, 133), TANK]
+              (98.0, 82.5, 102.6, 99.5), (117.4, 85.3, 122.0, 99.5), (102.9, 79.5, 117.1, 90.0), (102, 79.5, 118, 82.0), BUS, TANK,
+              (102.6, 90.2, 117.4, 101.0),      # low-side GND island (fixed GND via array)
+              (118.9, 83.6, 120.3, 85.0)]        # G2 gate via
 
 
 PENDING = set()
@@ -224,14 +227,14 @@ def _place_near(cap, ic, pin, netname, dists, layer, order):
         for k in order:
             dx, dy = dirs[k]
             x, y = px + dx * d, py + dy * d
-            rot = 0 if abs(dx) >= abs(dy) else 90
+            rot = (0 if abs(dx) >= abs(dy) else 90) if k not in ('d1', 'd2') else (math.degrees(math.atan2(-dy, dx)) % 180)
             capfp.SetPosition(P(x, y)); capfp.SetOrientationDegrees(rot)
             # supply pad toward the pin
             pads = sorted(capfp.Pads(), key=lambda q: math.hypot(pcbnew.ToMM(q.GetPosition().x) - px, pcbnew.ToMM(q.GetPosition().y) - py))
             if pads[0].GetNetname() != netname:
                 capfp.SetOrientationDegrees(rot + 180)
             bb = _bbox(capfp, 0.3)
-            if not (83.0 < bb[0] and bb[2] < 156.0 and 50.0 < bb[1] and bb[3] < 146.0):
+            if not (83.0 < bb[0] and bb[2] < 156.0 and 50.0 < bb[1] and bb[3] < BOARD['y1'] - 1.5):
                 continue
             if any(_overlap(bb, r) for r in KEEP_RECTS):
                 continue
@@ -272,7 +275,7 @@ DECAP = [('C17', 'VCO1', '16', '5V'), ('C18', 'U2', '5', '5V'), ('C6', 'U2', '4'
          ('C62', 'U9', '11', '5V', F), ('C53', 'U9', '3', '5V', F),  ('C31', 'U9', '6', 'Net-(U9-DT)', F)]
 def _clear(capfp, layer, cap):
     bb = _bbox(capfp, 0.3)
-    if not (83.0 < bb[0] and bb[2] < 156.0 and 50.0 < bb[1] and bb[3] < 146.0):
+    if not (83.0 < bb[0] and bb[2] < 156.0 and 50.0 < bb[1] and bb[3] < BOARD['y1'] - 1.5):
         return False
     if any(_overlap(bb, r) for r in KEEP_RECTS):
         return False
@@ -320,11 +323,11 @@ def fix_tp_overlaps():
     """test points that now collide with a placed part are nudged to the nearest free spot"""
     fps = list(board.GetFootprints())
     for tp in fps:
-        if not tp.GetReference().startswith('TP'):
+        if not tp.GetReference().startswith('TP') or list(tp.Pads())[0].GetNetname() == 'GND':
             continue
         def clash_at(x, y):
             tp.SetPosition(P(x, y)); bb = _bbox(tp, 0.3)
-            if any(_overlap(bb, r) for r in KEEP_RECTS) or not (83.0 < bb[0] and bb[2] < 150.0 and 50.0 < bb[1] and bb[3] < 146.0):
+            if any(_overlap(bb, r) for r in KEEP_RECTS) or not (83.0 < bb[0] and bb[2] < 150.0 and 50.0 < bb[1] and bb[3] < BOARD['y1'] - 1.5):
                 return True
             lays = (F, B) if any(q.GetAttribute() != pcbnew.PAD_ATTRIB_SMD for q in tp.Pads()) else (tp.GetLayer(),)
             return any(_blocks(f, l, bb) for f in fps if f is not tp for l in lays)
@@ -344,6 +347,102 @@ def fix_tp_overlaps():
 
 
 fix_tp_overlaps()
+
+
+def pair_testpoints(pitch=3.2):
+    """every signal test point gets a GND test point `pitch` away (probe ground); one GND TP may serve two signals"""
+    tps = [f for f in board.GetFootprints() if f.GetReference().startswith('TP')]
+    netof = lambda f: list(f.Pads())[0].GetNetname()
+    gnd = [f for f in tps if netof(f) == 'GND']
+    sig = [f for f in tps if netof(f) != 'GND']
+    pos = lambda f: (pcbnew.ToMM(f.GetPosition().x), pcbnew.ToMM(f.GetPosition().y))
+    home = {g.GetReference(): g.GetPosition() for g in gnd}
+    FIXED_GND = {'TP1': (122.6, 102.3),       # shared by TP22 (S2) and TP37 (G4) below the bridge
+                 'TP17': (128.0, 88.0)}       # G2 test point TP35 (4.3 mm; boxed in by R40 / C4 / U9)
+    for i, g in enumerate(gnd):
+        if g.GetReference() in FIXED_GND:
+            g.SetPosition(P(*FIXED_GND[g.GetReference()]))
+        else:
+            g.SetPosition(P(300.0 + 5.0 * i, 100.0))         # parked: must not block spots while pairing
+    FIRST = ['TP22', 'TP19', 'TP37', 'TP35', 'TP34', 'TP36', 'TP24', 'TP26']
+    sig.sort(key=lambda f: (FIRST.index(f.GetReference()) if f.GetReference() in FIRST else 99, f.GetReference()))
+
+    def free(tp, x, y, ignore=()):
+        tp.SetPosition(P(x, y)); bb = _bbox(tp, 0.3)
+        if any(_overlap(bb, r) for r in KEEP_RECTS) or not (83.0 < bb[0] and bb[2] < 150.0 and 50.0 < bb[1] and bb[3] < BOARD['y1'] - 1.5):
+            return False
+        skip = {tp.GetReference()} | {g.GetReference() for g in ignore}
+        return not any(_blocks(f, l, bb) for f in board.GetFootprints() if f.GetReference() not in skip for l in (F, B))
+    DIRS = [(1, 0), (-1, 0), (0, 1), (0, -1), (0.7071, 0.7071), (-0.7071, 0.7071), (0.7071, -0.7071), (-0.7071, -0.7071)]
+    DIRS += [(math.cos(math.pi / 8 * k), math.sin(math.pi / 8 * k)) for k in range(1, 16, 2)]
+    pairs = {}; used = [g for g in gnd if g.GetReference() in FIXED_GND]
+    for g in used:
+        if not free(g, *FIXED_GND[g.GetReference()]):
+            print('  pair_testpoints: fixed GND test point spot is NOT free:', g.GetReference())
+
+    def try_partner(s_):
+        sx, sy = pos(s_)
+        for g in sorted((g for g in gnd if g not in used), key=lambda g: math.hypot(pos(g)[0] - sx, pos(g)[1] - sy))[:4]:
+            g0 = g.GetPosition()
+            for d in (pitch, pitch * 1.2, pitch * 1.4, pitch * 1.7, pitch * 2.0):
+                for dx, dy in DIRS:
+                    if free(g, sx + dx * d, sy + dy * d, ignore=(s_,)):
+                        used.append(g); return g.GetReference(), round(d, 2)
+            g.SetPosition(g0)
+        return None
+
+    for s_ in sig:
+        s0 = s_.GetPosition(); sx0, sy0 = pos(s_); got = None
+        near = [(math.hypot(pos(g)[0] - sx0, pos(g)[1] - sy0), g.GetReference()) for g in used if g.GetReference() in FIXED_GND]
+        if near and min(near)[0] <= 4.4:
+            pairs[s_.GetReference()] = (min(near)[1] + ' (fixed)', round(min(near)[0], 2)); continue
+        # keep the signal TP where it is if a ground partner fits; otherwise move it a little (it stays near its net)
+        for rs in (0.0, 2.0, 3.5, 5.0, 7.0):
+            for ddx, ddy in ([(0, 0)] if rs == 0 else DIRS):
+                if rs and not free(s_, sx0 + ddx * rs, sy0 + ddy * rs):
+                    continue
+                s_.SetPosition(P(sx0 + ddx * rs, sy0 + ddy * rs))
+                got = try_partner(s_)
+                if got:
+                    break
+            if got:
+                break
+        if got:
+            pairs[s_.GetReference()] = got
+            continue
+        s_.SetPosition(s0)
+        # no free ground TP: share the nearest already placed one if the signal TP can sit on its far side
+        for g in sorted(used, key=lambda g: math.hypot(pos(g)[0] - sx0, pos(g)[1] - sy0)):
+            gx, gy = pos(g); done = False
+            for dx, dy in DIRS:
+                if free(s_, gx + dx * pitch, gy + dy * pitch, ignore=(g,)):
+                    done = True; break
+            if done:
+                pairs[s_.GetReference()] = (g.GetReference() + ' (shared)', pitch); break
+            s_.SetPosition(s0)
+        else:
+            print('  pair_testpoints: no ground partner for', s_.GetReference())
+    for k, v in sorted(pairs.items()):
+        print(f'  TP pair {k:5} <-> {v[0]:14} {v[1]} mm')
+    for g in gnd:
+        if g in used:
+            continue
+        x0, y0 = pcbnew.ToMM(home[g.GetReference()].x), pcbnew.ToMM(home[g.GetReference()].y)
+        ok = free(g, x0, y0)
+        for r in (0, 1.5, 2.5, 3.5, 4.5, 6.0, 8.0):
+            if ok:
+                break
+            for k in range(16):
+                a = math.pi / 8 * k
+                if free(g, x0 + r * math.cos(a), y0 + r * math.sin(a)):
+                    ok = True; break
+        if not ok:
+            g.SetPosition(home[g.GetReference()]); print('  pair_testpoints: spare GND test point could not be placed', g.GetReference())
+        else:
+            print('  pair_testpoints: spare GND test point', g.GetReference(), 'at', pos(g))
+
+
+pair_testpoints()
 # flying cap of the charge pump: centred between its two pins, just outside the package
 p5, p6 = pad_xy('IC2', '5'), pad_xy('IC2', '6')
 icc = board.FindFootprintByReference('IC2').GetPosition()
@@ -409,6 +508,8 @@ zone('S2', CU4, rect(*S2R), 3, solid=True)
 # Out+ : band above the bridge + middle column, neck to the bulk caps (inner/bottom only) and the left bus to the XT60
 OUTR = (105.5, 79.5, 114.5, 90.0)  # overlaps the Q1/Q3 drain bar ends (105.7 / 114.3) so the pour connects
 zone('Out+', CU4, [(102.0, 79.5), (118.0, 79.5), (118.0, 82.0), (114.5, 82.0), (114.5, 90.0), (105.5, 90.0), (105.5, 82.0), (102.0, 82.0)], 3, solid=True)
+OUTB = (102.9, 82.0, 117.1, 90.0)
+zone('Out+', (B, IN1, IN2), rect(*OUTB), 2, solid=True)   # under both FET columns: C28/C29 and C30/C54 Out+ pads land here
 for fp_ in board.GetFootprints():
     if len(fp_.Pads()) > 3:
         for p_ in fp_.Pads():
@@ -419,7 +520,7 @@ for ref in ('Q1', 'Q2', 'Q3', 'Q4', 'C19', 'C27', 'C28', 'C29', 'C30', 'C54', 'J
     for p in board.FindFootprintByReference(ref).Pads():
         p.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
 zone('Out+', (B, IN1), rect(83.0, 77.5, 106.0, 82.0), 4, solid=True)
-zone('Out+', (F, B, IN1), [(83.0, 76.5), (86.5, 76.5), (86.5, 133.0), (83.0, 133.0)], 2, solid=True)
+zone('Out+', (F, B, IN1), rect(*BUS), 2, solid=True)
 # the sense cap node and the C58/C1 link get small pours like the sample
 
 # ---------------------------------------------------------------- 5) vias (thermal arrays + stitching)
@@ -445,15 +546,15 @@ for x in frange(99.0, 101.0, 2.0):
 for x in frange(118.5, 120.5, 2.0):
     for y in frange(86.5, 98.5, 2.0):
         via(x, y, 'S2')
-for x in frange(107.5, 112.5, 1.67):
+for x in frange(108.3, 112.5, 1.4):
     for y in frange(82.5, 89.0, 1.6):
         via(x, y, 'Out+')
 for x in (103.3, 105.0, 115.0, 116.7):
     via(x, 80.8, 'Out+')
 for x, y in ((84.0, 84.5), (85.5, 84.5), (84.0, 110.0), (85.5, 110.0)):   # tie the Out+ bus layers at the neck and mid-way; the THT caps / XT60 do the rest
     via(x, y, 'Out+')
-for x in frange(108.5, 111.5, 1.5):
-    for y in frange(94.5, 98.5, 2.0):
+for x in frange(107.9, 112.3, 1.1):
+    for y in (95.2, 96.7, 98.2):
         via(x, y, 'GND')
 via(116.4, 99.0, 'GND')
 # ---------------------------------------------------------------- 6) explicit power tracks
@@ -514,8 +615,6 @@ poly([pad_xy('U4', 5), pad_xy('U4', 7)], 'GND', 0.25, F)
 r13 = pad_by_net('R13', 'Out+'); poly([r13, (85.5, r13[1])], 'Out+', 0.5, F)
 # gate escapes: each gate leaves the FET through the row gap / outside the copper islands, then drops to B.Cu
 GATES = {
-    'Q1': ('G1', [(101.6, 88.675)]),                                   # bottom-left gate -> left into the S1 island notch
-    'Q2': ('G3', [(106.8, 93.325), (106.8, 93.6)]),                    # top-right gate (rot 180) -> middle column
     'Q3': ('G2', [(119.6, 84.325)]),                                   # top-right gate (rot 180) -> right, above S2 island
     'Q4': ('G4', [(113.0, 97.675)]),                                   # bottom-left gate -> left, middle column
 }
@@ -531,6 +630,16 @@ for cap, ic in (('C21', 'S1_Gate_Driver1'), ('C23', 'U9')):
         cp = pad_by_net(cap, pn); ip = pad_xy(ic, pin)
         mid_y = cp[1] + (0.5 if ip[1] > cp[1] else -0.5)
         poly([cp, (ip[0], mid_y), ip], pn, 0.3, B)
+# G1 / G3: hand-routed (the lane between the S1 island and the bridge caps is too tight for the grid router)
+g1 = pad_xy('Q1', 1)
+poly([g1, (101.6, g1[1])], 'G1', 0.3, F); via(101.6, g1[1], 'G1', 0.6, 0.3)   # left into the S1 island notch, down to B.Cu
+poly([(101.6, g1[1]), (101.6, 91.0), (103.3, 91.0), (103.3, 100.1), (97.5, 100.1), pad_xy('R41', 2)], 'G1', 0.3, B)
+#   ^ out of the notch, down the lane between the S1 island and C28 (no sealed GND pocket), then to R41
+g3 = pad_xy('Q2', 1)
+poly([g3, (107.1, g3[1]), (107.1, 101.6)], 'G3', 0.3, F); via(107.1, 101.6, 'G3', 0.6, 0.3)   # right of Q2 on F.Cu, down past the GND via array
+poly([(107.1, 101.6), (97.5, 101.6), pad_xy('R42', 2)], 'G3', 0.3, B)
+# U9 pin 11 (5V) gets its In1 via explicitly (TP17 / R40 crowd its surroundings)
+poly([pad_xy('U9', 11), (126.79, 89.3)], '5V', 0.3, B); via(126.79, 89.3, '5V', 0.6, 0.3)
 C47W = 1.6
 # Q1 source pads (bottom row) -> S1 island through the notch; Q3 source pads (top row) -> S2 island
 poly([pad_xy('Q1', 14), (pad_xy('Q1', 14)[0], 89.9), (100.6, 89.9)], 'S1', 1.0, F)
@@ -576,7 +685,7 @@ def inside(x, y, r):
     return r[0] <= x <= r[2] and r[1] <= y <= r[3]
 
 
-NOGO = [S1R, S2R, (102, 79.5, 118, 90.3), (83, 76.5, 86.5, 133), TANK, (151.0, 71.0, 213.0, 135.0), (95.0, 99.5, 124.0, 102.0), (83.0, 77.0, 106.0, 82.5)]
+NOGO = [S1R, S2R, (102, 79.5, 118, 90.3), BUS, TANK, (151.0, 56.0, 213.0, 121.0), (95.0, 99.5, 124.0, 102.0), (83.0, 77.0, 106.0, 82.5)]
 # a GND via next to each gate driver's GNDI/GNDB pin (pour connection between pin rows is marginal); checked for clearance
 for ref_, pins_ in (('S1_Gate_Driver1', ('4', '9')), ('U9', ('4', '9'))):
     fp_ = board.FindFootprintByReference(ref_)
@@ -622,9 +731,116 @@ if ROUTE:
     sys.path.insert(0, r'C:\Users\Vedant\AppData\Local\Temp\claude\C--Users-Vedant-Documents-KiCad-Guad-Rectifier\f8062ecd-e151-4ec2-ab6b-2615ce91d466\scratchpad\work\pcb')
     import router
     unrouted = router.route_all(board, nogo=[((98.0, 82.5, 101.0, 99.5), CU4, 'S1'), ((101.0, 82.5, 102.6, 87.6), CU4, 'S1'), ((101.0, 93.4, 102.6, 99.5), CU4, 'S1'), (S2R, CU4, 'S2'), (OUTR, CU4, 'Out+'), ((102, 79.5, 118, 82.0), CU4, 'Out+'),
-                                  ((83, 76.5, 86.5, 133), (F, B), 'Out+'), ((83, 77.5, 106, 82), (B,), 'Out+'), (TANK, CU4, None)],
+                                  (BUS, (F, B), 'Out+'), ((83, 77.5, 106, 82), (B,), 'Out+'), (OUTB, (B,), 'Out+'), (TANK, CU4, None)],
                      fiveV_island=[FIVEV], board_rect=(bx0, by0, bx1, by1))
 
+
+def chamfer_tracks(cmin=0.2, clr=0.2):
+    """replace each 90-degree corner between two track segments (same layer, net, width) by a 45-degree mitre;
+    a mitre is skipped when its diagonal would come closer than `clr` to copper of another net"""
+    mmf = pcbnew.ToMM
+    segs = [t for t in board.GetTracks() if t.GetClass() == 'PCB_TRACK']
+    vias_ = [t for t in board.GetTracks() if t.GetClass() == 'PCB_VIA']
+    kp = lambda v: (round(mmf(v.x), 3), round(mmf(v.y), 3))
+    ends = {}
+    for t in segs:
+        for v in (t.GetStart(), t.GetEnd()):
+            ends.setdefault((t.GetLayer(), kp(v)), []).append(t)
+    via_at = {kp(v.GetPosition()) for v in vias_}
+    pads_ = []
+    for f in board.GetFootprints():
+        for q in f.Pads():
+            bb = q.GetBoundingBox()
+            pads_.append((q.GetNetCode(), (mmf(bb.GetLeft()), mmf(bb.GetTop()), mmf(bb.GetRight()), mmf(bb.GetBottom())), q.IsOnLayer(F), q.IsOnLayer(B)))
+
+    def sdist(p, a, b):
+        ax, ay = a; bx, by = b; px, py = p
+        dx, dy = bx - ax, by - ay; L2 = dx * dx + dy * dy
+        t = 0.0 if L2 == 0 else max(0.0, min(1.0, ((px - ax) * dx + (py - ay) * dy) / L2))
+        return math.hypot(px - (ax + t * dx), py - (ay + t * dy))
+
+    def cross(o, a, b):
+        return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+
+    def ssdist(a1, a2, b1, b2):
+        d1, d2 = cross(b1, b2, a1), cross(b1, b2, a2); d3, d4 = cross(a1, a2, b1), cross(a1, a2, b2)
+        if ((d1 > 0) != (d2 > 0)) and ((d3 > 0) != (d4 > 0)) and d1 != 0 and d2 != 0 and d3 != 0 and d4 != 0:
+            return 0.0
+        return min(sdist(a1, b1, b2), sdist(a2, b1, b2), sdist(b1, a1, a2), sdist(b2, a1, a2))
+
+    def rect_seg_dist(r, a, b):
+        best = 1e9
+        for k in range(9):
+            t = k / 8.0; x, y = a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t
+            dx = max(r[0] - x, 0.0, x - r[2]); dy = max(r[1] - y, 0.0, y - r[3])
+            best = min(best, math.hypot(dx, dy))
+        return best
+
+    n = 0; skipped = 0
+    for (layer, pt), ts in list(ends.items()):
+        if len(ts) != 2 or pt in via_at:
+            continue
+        a, b = ts
+        if a.GetNetCode() != b.GetNetCode() or a.GetWidth() != b.GetWidth():
+            continue
+        def other(t):
+            s0, e0 = kp(t.GetStart()), kp(t.GetEnd()); return e0 if s0 == pt else s0
+        oa, ob = other(a), other(b)
+        da = (oa[0] - pt[0], oa[1] - pt[1]); db = (ob[0] - pt[0], ob[1] - pt[1])
+        la, lb = math.hypot(*da), math.hypot(*db)
+        if la < 1e-6 or lb < 1e-6 or abs(da[0] * db[0] + da[1] * db[1]) > 1e-3 * la * lb:
+            continue                                                    # not a right angle
+        w = mmf(a.GetWidth()); net = a.GetNetCode()
+        if any(nc == net and r[0] <= pt[0] <= r[2] and r[1] <= pt[1] <= r[3] for nc, r, _, _ in pads_):
+            continue                                                    # corner inside its own pad
+        cfull = min(max(0.8, w), 0.45 * la, 0.45 * lb)
+        if cfull < cmin:
+            continue
+        need = w / 2 + clr + 0.03
+        onF = (layer == F)
+
+        def fits(c):
+            A = (pt[0] + da[0] / la * c, pt[1] + da[1] / la * c); Bp = (pt[0] + db[0] / lb * c, pt[1] + db[1] / lb * c)
+            for t in segs:
+                if t.GetNetCode() != net and t.GetLayer() == layer and ssdist(A, Bp, kp(t.GetStart()), kp(t.GetEnd())) < need + mmf(t.GetWidth()) / 2:
+                    return None
+            for v in vias_:
+                if v.GetNetCode() != net and sdist(kp(v.GetPosition()), A, Bp) < need + mmf(v.GetWidth(layer)) / 2:
+                    return None
+            for nc, r, pf, pb in pads_:
+                if nc != net and ((onF and pf) or ((not onF) and pb)) and rect_seg_dist(r, A, Bp) < need:
+                    return None
+            r_keep = w / 2 - 0.05
+            for v in vias_:
+                if v.GetNetCode() != net:
+                    continue
+                vp = kp(v.GetPosition())
+                if math.hypot(vp[0] - pt[0], vp[1] - pt[1]) > w / 2 + mmf(v.GetWidth(layer)) / 2 + 0.1:
+                    continue
+                if min(sdist(vp, oa, A), sdist(vp, ob, Bp), sdist(vp, A, Bp)) > r_keep + mmf(v.GetWidth(layer)) / 2:
+                    return None
+            return A, Bp
+        got = None
+        for c in (cfull, cfull * 0.6, cfull * 0.35, 0.15):
+            if c < 0.15:
+                break
+            got = fits(c)
+            if got:
+                break
+        if not got:
+            skipped += 1; continue
+        A, Bp = got
+        for t, newpt in ((a, A), (b, Bp)):
+            if kp(t.GetStart()) == pt:
+                t.SetStart(P(*newpt))
+            else:
+                t.SetEnd(P(*newpt))
+        d = pcbnew.PCB_TRACK(board); d.SetStart(P(*A)); d.SetEnd(P(*Bp)); d.SetWidth(a.GetWidth()); d.SetLayer(layer); d.SetNet(a.GetNet()); board.Add(d)
+        n += 1
+    print(f'  chamfer_tracks: mitred {n} right-angle corners, {skipped} left (clearance)')
+
+
+chamfer_tracks()
 # ---------------------------------------------------------------- 9) fill, stitch isolated GND pockets, place text, save
 def seg_d(x, y, a, b):
     ax, ay = a; bx, by = b
@@ -636,7 +852,7 @@ def seg_d(x, y, a, b):
 
 def via_spot_clear(x, y):
     """can a 0.6 mm GND via go at (x, y)? keep 0.5 mm from every pad / track / via and out of the islands"""
-    if any(inside(x, y, r) for r in (S1R, S2R, OUTR, (102, 79.5, 118, 82), (83, 76.5, 86.5, 133), (83, 77.5, 106, 82), TANK)):
+    if any(inside(x, y, r) for r in (S1R, S2R, OUTR, OUTB, (102, 79.5, 118, 82), BUS, (83, 77.5, 106, 82), TANK)):
         return False
     for fp in board.GetFootprints():
         for p in fp.Pads():

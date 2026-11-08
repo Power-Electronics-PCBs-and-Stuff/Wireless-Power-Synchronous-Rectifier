@@ -20,3 +20,12 @@ Files: `build_pcb.py` (placement table, zones, via arrays, power copper, GND-poc
 `router.py` (grid A* router on F/B with vias; 5V drops into the In1 plane), `finish.py`, `check_board.py`,
 `islands.py` (lists zone fill islands), `drcsum.py` (groups a kicad-cli DRC report), `render.sh`/`crop.sh`
 (PDF -> PNG previews via pdftoppm).
+
+## v30 additions (2026-11-08)
+- `run_v30.sh` = multi-seed routed build + finish + DRC; `post_v30.sh` installs the board when DRC is clean and runs the
+  kicad-happy analyzers; `multi.sh` picks the best fully routed seed by `score.py`.
+- `current_check.py <board>`: copper width per layer across named cut lines -> IPC-2221 ampacity table (edit `CUTS`).
+- `pair_check.py <board>`: lengths of the signal pairs, remaining right-angle corners, decoupling-cap axis vs. pin.
+- In `build_pcb.py`: `place_near`/`place_between` (decoupling and bootstrap caps), `pair_testpoints` (GND test point next
+  to every signal test point, `FIXED_GND` for hand-placed ones), `chamfer_tracks` (45-degree mitres after routing),
+  hand-routed G1/G3 gate tracks, bridge caps C28/C29/C30/C54 under the FET columns on the `OUTB` Out+ pour.
