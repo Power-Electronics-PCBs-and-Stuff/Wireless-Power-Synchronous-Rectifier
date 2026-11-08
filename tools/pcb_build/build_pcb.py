@@ -85,7 +85,7 @@ PL = {
     'C21': (96.3, 104.5, 0, F), 'D5': (92.0, 104.5, 0, F), 'D1': (92.0, 107.0, 0, F), 'C61': (96.3, 107.0, 0, F), 'C52': (96.3, 109.0, 0, F),
     'TP34': (100.8, 104.5, 0, F), 'TP36': (100.8, 108.0, 0, F),
     # --- S2 gate driver (B.Cu) + bootstrap column (F.Cu)
-    'U9': (128.7, 93.5, 90, B), 'R1': (131.9, 87.5, 90, B), 'R40': (125.5, 87.5, 90, B),
+    'U9': (128.7, 93.5, 90, B), 'R1': (131.9, 86.3, 0, B), 'R40': (125.5, 87.5, 90, B),
     'R29': (131.5, 100.6, 0, B), 'C31': (131.5, 102.4, 0, B),
     'C23': (125.0, 84.5, 0, F), 'D6': (124.8, 88.5, 90, F), 'D2': (124.8, 93.5, 90, F), 'C62': (130.5, 98.0, 0, F), 'C53': (130.5, 96.0, 0, F),
     'TP35': (128.8, 88.3, 0, F), 'TP37': (110.5, 101.6, 0, F),
@@ -109,7 +109,7 @@ PL = {
     'C17': (106.8, 101.5, 0, F),
     # --- virtual driver + feedback comparator
     'U1': (126.0, 104.5, 0, F), 'R7': (116.8, 105.5, 0, F), 'C32': (116.8, 107.5, 0, F),
-    'C7': (131.5, 101.5, 90, F), 'C8': (131.5, 104.5, 90, F), 'R10': (133.5, 104.5, 90, F), 'C9': (131.5, 109.0, -90, F),
+    'C7': (131.5, 101.5, 90, F), 'C8': (131.5, 104.5, 90, F), 'R10': (135.5, 104.5, 90, F), 'C9': (134.2, 109.0, -90, F),
     'U2': (127.7, 112.5, 0, B), 'C6': (128.9, 109.5, 0, B), 'R47': (131.6, 112.5, 90, B), 'R51': (128.9, 115.5, 180, B), 'C18': (124.5, 109.5, 0, B),
     'TP7': (125.0, 118.5, 0, F),
     'U10': (101.0, 112.8, 0, F), 'C10': (101.0, 116.0, 0, F),
@@ -162,6 +162,86 @@ orient_top('C9', 'FB')
 orient_top('D2', 'Net-(D2-K)')
 for ref in ('C28', 'C29', 'C30', 'C54'):
     orient_top(ref, 'Out+')
+def _bbox(fp, m=0.0):
+    bb = fp.GetBoundingBox(False, False)
+    return (pcbnew.ToMM(bb.GetLeft()) - m, pcbnew.ToMM(bb.GetTop()) - m, pcbnew.ToMM(bb.GetRight()) + m, pcbnew.ToMM(bb.GetBottom()) + m)
+
+
+def _overlap(a, b):
+    return a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
+
+
+KEEP_RECTS = [(88.7, 74.0, 94.3, 84.0), (119.5, 77.0, 122.5, 86.0),   # 5 mm C1->S1 and 2.5 mm C47->S2 tank tracks
+              (98.0, 82.5, 102.6, 99.5), (117.4, 85.3, 122.0, 99.5), (105.5, 79.5, 114.5, 90.0), (102, 79.5, 118, 82.0), (83, 76.5, 86.5, 133), TANK]
+
+
+PENDING = set()
+
+
+def _blocks(f, layer, bb):
+    """does footprint f keep a part with bbox bb off `layer`? same-layer parts: whole body; THT parts seen from the far side: pads only"""
+    tht = any(q.GetAttribute() != pcbnew.PAD_ATTRIB_SMD for q in f.Pads())
+    if f.GetLayer() == layer:
+        return _overlap(bb, _bbox(f, 0.0))
+    if not tht:
+        return False
+    for q in f.Pads():
+        r = q.GetBoundingBox(); pb = (pcbnew.ToMM(r.GetLeft()) - 0.3, pcbnew.ToMM(r.GetTop()) - 0.3, pcbnew.ToMM(r.GetRight()) + 0.3, pcbnew.ToMM(r.GetBottom()) + 0.3)
+        if _overlap(bb, pb):
+            return True
+    return False
+
+
+def place_near(cap, ic, pin, netname, dists=(2.1, 2.7, 3.3, 3.9, 4.5, 5.2), layer=None, order=('out', 'perp+', 'perp-', 'in')):
+    """put a 2-pad cap next to IC pin `pin`, on the IC's layer (fallback: other layer), axis pointing at the pin, supply pad nearest the pin"""
+    icfp = board.FindFootprintByReference(ic)
+    layer = layer if layer is not None else icfp.GetLayer()
+    if _place_near(cap, ic, pin, netname, dists, layer, order):
+        return True
+    if _place_near(cap, ic, pin, netname, dists + (6.0, 7.0), B if layer == F else F, order):
+        print('  place_near:', cap, 'placed on the other layer')
+        return True
+    print('  place_near: no spot for', cap, 'near', ic, pin)
+    return False
+
+
+def _place_near(cap, ic, pin, netname, dists, layer, order):
+    icfp = board.FindFootprintByReference(ic); capfp = board.FindFootprintByReference(cap)
+    pos0, rot0, lay0 = capfp.GetPosition(), capfp.GetOrientationDegrees(), capfp.GetLayer()
+    px, py = pad_xy(ic, pin)
+    icx, icy = pcbnew.ToMM(icfp.GetPosition().x), pcbnew.ToMM(icfp.GetPosition().y)
+    ox, oy = px - icx, py - icy
+    ux, uy = ((1.0 if ox > 0 else -1.0), 0.0) if abs(ox) >= abs(oy) else (0.0, (1.0 if oy > 0 else -1.0))
+    r2 = math.sqrt(0.5)
+    dirs = {'out': (ux, uy), 'perp+': (-uy, ux), 'perp-': (uy, -ux), 'in': (-ux, -uy),
+            'd1': ((ux - uy) * r2, (uy + ux) * r2), 'd2': ((ux + uy) * r2, (uy - ux) * r2)}
+    order = tuple(order) + ('d1', 'd2')
+    if capfp.GetLayer() != layer:
+        capfp.Flip(capfp.GetPosition(), False)
+    others = [f for f in board.GetFootprints() if f.GetReference() != cap and f.GetReference() not in PENDING
+              and not f.GetReference().startswith('TP')]      # test points are moved out of the way afterwards
+    for d in dists:
+        for k in order:
+            dx, dy = dirs[k]
+            x, y = px + dx * d, py + dy * d
+            rot = 0 if abs(dx) >= abs(dy) else 90
+            capfp.SetPosition(P(x, y)); capfp.SetOrientationDegrees(rot)
+            # supply pad toward the pin
+            pads = sorted(capfp.Pads(), key=lambda q: math.hypot(pcbnew.ToMM(q.GetPosition().x) - px, pcbnew.ToMM(q.GetPosition().y) - py))
+            if pads[0].GetNetname() != netname:
+                capfp.SetOrientationDegrees(rot + 180)
+            bb = _bbox(capfp, 0.3)
+            if not (83.0 < bb[0] and bb[2] < 156.0 and 50.0 < bb[1] and bb[3] < 146.0):
+                continue
+            if any(_overlap(bb, r) for r in KEEP_RECTS):
+                continue
+            clash = any(_blocks(f, layer, bb) for f in others)
+            if not clash:
+                return True
+    if capfp.GetLayer() != lay0:
+        capfp.Flip(capfp.GetPosition(), False)
+    capfp.SetPosition(pos0); capfp.SetOrientationDegrees(rot0)
+    return False
 
 
 def pad_xy(ref, num):
@@ -178,6 +258,101 @@ def pad_by_net(ref, netname):
         if p.GetNetname() == netname:
             v = p.GetPosition(); return (pcbnew.ToMM(v.x), pcbnew.ToMM(v.y))
     raise KeyError((ref, netname))
+
+# decoupling / bootstrap caps: re-placed against their IC supply pins (loop area first, placement table second)
+DECAP = [('C17', 'VCO1', '16', '5V'), ('C18', 'U2', '5', '5V'), ('C6', 'U2', '4', '2.5Vb'),
+         ('C36', 'U3', '5', '5V'), ('C25', 'U3', '4', '2.5Va'),
+         ('C48', 'IC3', '7', '5V'), ('C49', 'IC3', '4', '-5V'), ('C12', 'IC3', '7', '5V'),
+         ('C38', 'IC2', '4', '5V'), ('C39', 'IC2', '1', '-5V'),
+         ('C7', 'U1', '16', '5V'), ('C8', 'U1', '11', '5V'), ('C32', 'U1', '6', 'Net-(U1-DT)'),
+         ('C26', 'U4', '1', '5V'), ('C16', 'U4', '6', 'Net-(U4-EN)'),
+         ('C20', 'U11', '5', '5V'), ('C10', 'U10', '5', '5V'),
+         ('C61', 'S1_Gate_Driver1', '11', '5V', F), ('C52', 'S1_Gate_Driver1', '3', '5V', F), 
+         ('C24', 'S1_Gate_Driver1', '6', 'Net-(S1_Gate_Driver1-DT)', F),
+         ('C62', 'U9', '11', '5V', F), ('C53', 'U9', '3', '5V', F),  ('C31', 'U9', '6', 'Net-(U9-DT)', F)]
+def _clear(capfp, layer, cap):
+    bb = _bbox(capfp, 0.3)
+    if not (83.0 < bb[0] and bb[2] < 156.0 and 50.0 < bb[1] and bb[3] < 146.0):
+        return False
+    if any(_overlap(bb, r) for r in KEEP_RECTS):
+        return False
+    for f in board.GetFootprints():
+        if f.GetReference() == cap or f.GetReference() in PENDING or f.GetReference().startswith('TP'):
+            continue
+        if _blocks(f, layer, bb):
+            return False
+    return True
+
+
+def place_between(cap, ic, pinA, netA, pinB, netB, offs=(1.9, 2.5, 3.1, 3.7), layers=None):
+    """cap parallel to the pin row, centred between pins A and B, `off` outside the row; pad of netA toward pin A"""
+    icfp = board.FindFootprintByReference(ic); capfp = board.FindFootprintByReference(cap)
+    ax, ay = pad_xy(ic, pinA); bx, by = pad_xy(ic, pinB)
+    icx, icy = pcbnew.ToMM(icfp.GetPosition().x), pcbnew.ToMM(icfp.GetPosition().y)
+    mx, my = (ax + bx) / 2, (ay + by) / 2
+    horiz = abs(ax - bx) >= abs(ay - by)
+    nx, ny = (0.0, (1.0 if my > icy else -1.0)) if horiz else ((1.0 if mx > icx else -1.0), 0.0)
+    for layer in (layers or (icfp.GetLayer(), B if icfp.GetLayer() == F else F)):
+        if capfp.GetLayer() != layer:
+            capfp.Flip(capfp.GetPosition(), False)
+        for off in offs:
+            capfp.SetPosition(P(mx + nx * off, my + ny * off)); capfp.SetOrientationDegrees(0 if horiz else 90)
+            pa = [q for q in capfp.Pads() if q.GetNetname() == netA][0]
+            qx, qy = pcbnew.ToMM(pa.GetPosition().x), pcbnew.ToMM(pa.GetPosition().y)
+            if math.hypot(qx - ax, qy - ay) > math.hypot(qx - bx, qy - by):      # netA pad must be the one nearer pin A
+                capfp.SetOrientationDegrees(capfp.GetOrientationDegrees() + 180)
+            if _clear(capfp, layer, cap):
+                return True
+    print('  place_between: no spot for', cap, 'near', ic, pinA, pinB)
+    return False
+
+
+PENDING.update(r[0] for r in DECAP)
+PENDING.update(('C21', 'C23'))
+for row in DECAP:
+    PENDING.discard(row[0])
+    place_near(*row[:4], layer=(row[4] if len(row) > 4 else None))
+PENDING.discard('C21'); place_between('C21', 'S1_Gate_Driver1', '16', 'Net-(D1-K)', '14', 'S1')
+PENDING.discard('C23'); place_between('C23', 'U9', '16', 'Net-(D2-K)', '14', 'S2')
+
+
+def fix_tp_overlaps():
+    """test points that now collide with a placed part are nudged to the nearest free spot"""
+    fps = list(board.GetFootprints())
+    for tp in fps:
+        if not tp.GetReference().startswith('TP'):
+            continue
+        def clash_at(x, y):
+            tp.SetPosition(P(x, y)); bb = _bbox(tp, 0.3)
+            if any(_overlap(bb, r) for r in KEEP_RECTS) or not (83.0 < bb[0] and bb[2] < 150.0 and 50.0 < bb[1] and bb[3] < 146.0):
+                return True
+            lays = (F, B) if any(q.GetAttribute() != pcbnew.PAD_ATTRIB_SMD for q in tp.Pads()) else (tp.GetLayer(),)
+            return any(_blocks(f, l, bb) for f in fps if f is not tp for l in lays)
+        x0, y0 = pcbnew.ToMM(tp.GetPosition().x), pcbnew.ToMM(tp.GetPosition().y)
+        if not clash_at(x0, y0):
+            continue
+        done = False
+        for r in (1.5, 2.5, 3.5, 4.5, 6.0, 7.5, 9.0, 11.0):
+            for k in range(16):
+                a = math.pi / 8 * k
+                if not clash_at(x0 + r * math.cos(a), y0 + r * math.sin(a)):
+                    done = True; break
+            if done:
+                break
+        if not done:
+            tp.SetPosition(P(x0, y0)); print('  fix_tp_overlaps: could not clear', tp.GetReference())
+
+
+fix_tp_overlaps()
+# flying cap of the charge pump: centred between its two pins, just outside the package
+p5, p6 = pad_xy('IC2', '5'), pad_xy('IC2', '6')
+icc = board.FindFootprintByReference('IC2').GetPosition()
+mx, my = (p5[0] + p6[0]) / 2, (p5[1] + p6[1]) / 2
+vx, vy = mx - pcbnew.ToMM(icc.x), my - pcbnew.ToMM(icc.y); vn = math.hypot(vx, vy)
+c40 = board.FindFootprintByReference('C40')
+c40.SetPosition(P(mx + vx / vn * 1.9, my + vy / vn * 1.9)); c40.SetOrientationDegrees(90 if abs(p5[0] - p6[0]) < abs(p5[1] - p6[1]) else 0)
+if math.hypot(pad_xy('C40', '1')[0] - p5[0], pad_xy('C40', '1')[1] - p5[1]) > math.hypot(pad_xy('C40', '2')[0] - p5[0], pad_xy('C40', '2')[1] - p5[1]):
+    c40.SetOrientationDegrees(c40.GetOrientationDegrees() + 180)
 
 
 # ---------------------------------------------------------------- 4) zones
@@ -349,6 +524,13 @@ for q, (netname, pts) in GATES.items():
     assert abs(g[1] - pts[0][1]) < 0.01 or abs(g[0] - pts[0][0]) < 0.01, (q, g, pts[0])
     poly([g] + pts, netname, 0.3, F)
     via(*pts[-1], netname, 0.6, 0.3)
+# bootstrap caps of the two Si8274 drivers: straight stubs from the cap pads to VDDA (16) / VSSA (14) on B.Cu
+for cap, ic in (('C21', 'S1_Gate_Driver1'), ('C23', 'U9')):
+    for pin in ('16',):      # VSSA side (pin 14) is left to the router so it also gets tied into the S1/S2 island
+        pn = [q for q in board.FindFootprintByReference(ic).Pads() if q.GetNumber() == pin][0].GetNetname()
+        cp = pad_by_net(cap, pn); ip = pad_xy(ic, pin)
+        mid_y = cp[1] + (0.5 if ip[1] > cp[1] else -0.5)
+        poly([cp, (ip[0], mid_y), ip], pn, 0.3, B)
 C47W = 1.6
 # Q1 source pads (bottom row) -> S1 island through the notch; Q3 source pads (top row) -> S2 island
 poly([pad_xy('Q1', 14), (pad_xy('Q1', 14)[0], 89.9), (100.6, 89.9)], 'S1', 1.0, F)

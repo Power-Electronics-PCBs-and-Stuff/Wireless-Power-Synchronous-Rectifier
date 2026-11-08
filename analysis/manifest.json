@@ -1,7 +1,7 @@
 {
   "version": 1,
   "project": "Synchronous Rectifier.kicad_pro",
-  "current": "2026-11-06_2334",
+  "current": "2026-11-08_0009",
   "runs": {
     "2026-11-06_2313": {
       "source_hashes": {
@@ -66,6 +66,36 @@
         "pcb": "analyze_pcb.py Synchronous Rectifier.kicad_pcb"
       },
       "generated": "2026-11-06T23:34:18-06:00",
+      "pinned": false
+    },
+    "2026-11-07_2341": {
+      "source_hashes": {
+        "Synchronous Rectifier.kicad_sch": "sha256:cc176172e49f471c6869e69f51de13343c8fe53de4a82da6abb379be9b8627c1",
+        "Synchronous Rectifier.kicad_pcb": "sha256:92713f24f8fd91a9f5c82d9322c8abc2f7a1834db0ac44bb5ffd7f313b926ed2"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json"
+      },
+      "scripts": {
+        "pcb": "analyze_pcb.py Synchronous Rectifier.kicad_pcb"
+      },
+      "generated": "2026-11-07T23:41:44-06:00",
+      "pinned": false
+    },
+    "2026-11-08_0009": {
+      "source_hashes": {
+        "Synchronous Rectifier.kicad_sch": "sha256:cc176172e49f471c6869e69f51de13343c8fe53de4a82da6abb379be9b8627c1",
+        "Synchronous Rectifier.kicad_pcb": "sha256:db3bd1b77837b24d4a77952ccd91ffffb26b78828cc8c8fa8e2ec898324b1265"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json"
+      },
+      "scripts": {
+        "pcb": "analyze_pcb.py Synchronous Rectifier.kicad_pcb"
+      },
+      "generated": "2026-11-08T00:09:13-06:00",
       "pinned": false
     }
   }

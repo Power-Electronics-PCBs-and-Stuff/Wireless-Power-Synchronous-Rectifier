@@ -9,4 +9,4 @@ for seed in 0 1 2 3 4; do
   if [ "$n" -lt "$bestn" ]; then bestn=$n; best=$seed; fi
   if [ "$n" -eq 0 ]; then break; fi
 done
-echo "best seed $best ($bestn)"; cp try_$best.kicad_pcb v25.kicad_pcb; cp try_$best.log v25.log
+echo "best seed $best ($bestn)"; cp try_$best.kicad_pcb v29.kicad_pcb; cp try_$best.log v29.log
