@@ -14,9 +14,9 @@ board = pcbnew.LoadBoard(SRC)
 
 F, B, IN1, IN2 = pcbnew.F_Cu, pcbnew.B_Cu, pcbnew.In1_Cu, pcbnew.In2_Cu
 CU4 = (F, IN1, IN2, B)
-BOARD = dict(x0=65.1, y0=49.4, x1=216.0, y1=127.0, r=3.0)
+BOARD = dict(x0=65.1, y0=43.4, x1=216.0, y1=127.0, r=3.0)
 BUS = (83.0, 62.0, 86.5, 120.0)      # Out+ bus along the left edge (F/B/In1) from the bulk caps down to the XT60
-TANK = (89.0, 49.4, 124.0, 77.5)  # no copper pours under the resonant tank
+TANK = (89.0, 43.4, 124.0, 77.5)  # no copper pours under the resonant tank
 
 
 def P(x, y):
@@ -59,13 +59,13 @@ def outline():
 
 
 outline()
-HOLES = [(68.7, 53.0), (146.4, 53.0), (212.4, 53.0), (68.6, 123.4), (146.4, 123.4), (212.4, 123.4)]
+HOLES = [(68.7, 47.0), (146.4, 47.0), (212.4, 47.0), (68.6, 123.4), (146.4, 123.4), (212.4, 123.4)]
 for i, (x, y) in enumerate(HOLES, 1):
     fp = pcbnew.FootprintLoad(r'C:\Program Files\KiCad\10.0\share\kicad\footprints\MountingHole.pretty', 'MountingHole_3.2mm_M3')
     fp.SetReference(f'H{i}'); fp.SetPosition(P(x, y)); fp.Reference().SetVisible(False); board.Add(fp)
 
 # three assembly fiducials around the SMD area
-for i, (x, y) in enumerate([(72.5, 56.5), (143.0, 56.5), (75.5, 120.5)], 1):
+for i, (x, y) in enumerate([(72.5, 50.5), (143.0, 50.5), (75.5, 120.5)], 1):
     fp = pcbnew.FootprintLoad('C:/Program Files/KiCad/10.0/share/kicad/footprints/Fiducial.pretty', 'Fiducial_1mm_Mask2mm')
     fp.SetReference(f'FID{i}'); fp.SetPosition(P(x, y)); fp.Reference().SetVisible(False); board.Add(fp)
 
@@ -75,51 +75,51 @@ PL = {
     'Q1': (104.0, 86.5, 0, F), 'Q3': (116.0, 86.5, 180, F), 'Q2': (104.0, 95.5, 180, F), 'Q4': (116.0, 95.5, 0, F),
     'C28': (104.6, 91.0, 90, B), 'C29': (107.1, 91.0, 90, B), 'C30': (114.0, 91.0, 90, B), 'C54': (116.5, 91.0, 90, B),   # 2 per half bridge, under the FET columns
     'C19': (84.7, 71.5, 180, F), 'C27': (84.6, 89.5, 180, F),
-    'TP19': (103.5, 103.6, 0, F), 'TP22': (119.4, 102.3, 0, F),
+    'TP19': (100.5, 103.4, 0, F), 'TP22': (119.4, 102.3, 0, F),
     # --- tank / input
-    'ReceiverCoil1': (109.0, 62.0, 180, F),
-    'C58': (91.5, 66.0, 90, F), 'C1': (91.5, 73.0, 90, F), 'C47': (121.0, 76.0, 90, F),
-    'C3': (125.0, 72.5, 0, F), 'C2': (124.5, 80.5, 0, F),
+    'ReceiverCoil1': (109.0, 56.0, 180, F),
+    'C58': (100.0, 71.0, 90, F), 'C1': (100.0, 76.5, 90, F), 'C47': (121.0, 76.0, 90, F),
+    'C3': (125.5, 70.5, 90, F), 'C2': (125.5, 74.0, 90, F),
     # --- S1 gate driver (B.Cu) + bootstrap column (F.Cu)
     'S1_Gate_Driver1': (91.7, 93.5, 270, B), 'R41': (96.0, 100.6, 0, B), 'R42': (96.0, 102.4, 0, B),
     'R28': (96.0, 86.5, 0, B), 'C24': (96.0, 88.3, 0, B),
-    'C21': (96.3, 104.5, 0, F), 'D5': (92.0, 104.5, 0, F), 'D1': (92.0, 107.0, 0, F), 'C61': (96.3, 107.0, 0, F), 'C52': (96.3, 109.0, 0, F),
-    'TP34': (97.6, 106.9, 0, F), 'TP36': (100.8, 108.0, 0, F),
+    'C21': (96.3, 104.5, 0, F), 'D5': (90.5, 104.8, 0, F), 'D1': (95.5, 104.8, 0, F), 'C61': (96.3, 107.0, 0, F), 'C52': (96.3, 109.0, 0, F),
+    'TP34': (93.0, 108.6, 0, F), 'TP36': (99.4, 108.6, 0, F),
     # --- S2 gate driver (B.Cu) + bootstrap column (F.Cu)
     'U9': (128.7, 93.5, 90, B), 'R1': (131.9, 86.3, 180, B), 'R40': (125.5, 87.5, 90, B),   # R1 flipped: G2 pad on the left so the gate trace arrives along y~86.2 under C4/R45
     'R29': (131.5, 100.6, 0, B), 'C31': (131.5, 102.4, 0, B),
     'C23': (125.0, 84.5, 0, F), 'D6': (124.8, 88.5, 90, F), 'D2': (124.8, 93.5, 90, F), 'C62': (130.5, 98.0, 0, F), 'C53': (130.5, 96.0, 0, F),
     'TP35': (126.2, 84.1, 0, F), 'TP37': (125.8, 102.3, 0, F),
     # --- current sense (top right)
-    'R5': (124.3, 75.5, 0, F), 'R6': (127.5, 75.5, 0, F), 'R37': (130.7, 75.5, 0, F),
-    'R2': (124.3, 78.0, 0, F), 'R3': (127.5, 78.0, 0, F), 'R4': (130.7, 78.0, 0, F),
-    'TP10': (136.6, 78.0, 0, F),
-    'IC3': (133.5, 81.5, 0, B), 'R43': (131.9, 83.5, 0, F), 'R44': (134.2, 79.5, 0, F),
-    'C4': (128.8, 83.9, 90, F), 'R45': (128.8, 83.9, -90, B), 'C5': (128.8, 80.5, 90, B), 'R46': (128.8, 80.5, -90, F),   # C4/R45 0.6 up: lane for the G2 gate trace
+    'R5': (127.5, 70.5, 90, F), 'R6': (129.5, 70.5, 90, F), 'R37': (131.5, 70.5, 90, F),
+    'R2': (127.5, 74.0, 90, F), 'R3': (129.5, 74.0, 90, F), 'R4': (131.5, 74.0, 90, F),
+    'TP10': (126.5, 66.0, 0, F),
+    'IC3': (134.0, 79.0, 0, B), 'R43': (130.5, 85.6, 90, F), 'R44': (136.5, 85.6, 90, F),
+    'C4': (134.5, 85.6, 90, F), 'R45': (132.5, 85.6, 90, F), 'C5': (140.5, 85.6, 90, F), 'R46': (138.5, 85.6, 90, F),   # C4/R45 0.6 up: lane for the G2 gate trace
     'C12': (139.0, 83.3, 0, F), 'C48': (135.5, 84.5, 0, F),
-    'IC2': (134.5, 74.5, 90, F), 'C40': (134.5, 70.5, 180, F), 'C38': (137.5, 74.5, 90, F), 'C39': (138.0, 76.5, 90, B),
-    'C49': (128.5, 70.5, 0, F), 'TP18': (131.5, 67.5, 0, F),
-    'TP11': (141.0, 80.0, 0, F), 'C11': (139.5, 83.0, -90, B), 'R12': (140.5, 86.0, 180, B), 'R8': (138.0, 86.0, 180, F),
-    'U3': (138.5, 91.5, 180, F), 'C25': (137.5, 94.5, 180, B), 'R24': (135.0, 93.0, -90, B), 'R25': (134.5, 87.0, 0, F),
-    'C36': (137.5, 96.5, 180, B), 'TP14': (142.5, 93.0, 0, F), 'TP6': (142.5, 89.0, 0, F),
+    'IC2': (143.0, 70.5, 90, F), 'C40': (134.5, 70.5, 180, F), 'C38': (137.5, 74.5, 90, F), 'C39': (138.0, 76.5, 90, B),
+    'C49': (128.5, 70.5, 0, F), 'TP18': (133.0, 66.0, 0, F),
+    'TP11': (138.0, 66.0, 0, F), 'C11': (147.0, 90.0, 90, F), 'R12': (145.0, 90.0, 90, F), 'R8': (143.0, 90.0, 90, F),
+    'U3': (143.0, 94.0, 180, F), 'C25': (137.5, 94.5, 180, B), 'R24': (141.0, 90.0, 90, F), 'R25': (139.0, 90.0, 90, F),
+    'C36': (137.5, 96.5, 180, B), 'TP14': (145.0, 99.0, 0, F), 'TP6': (138.6, 99.0, 0, F),
     # --- PLL / VCO (center bottom)
-    'VCO1': (111.0, 108.0, 0, B), 'C14': (106.3, 105.0, -90, B), 'C33': (106.3, 108.5, 90, B), 'C13': (105.7, 111.5, 180, B),
-    'C22': (111.5, 115.5, 0, B), 'R18': (111.1, 106.0, 0, F), 'R19': (111.1, 107.5, 0, F),
-    'R22': (115.6, 108.0, -90, B), 'R20': (115.6, 104.3, 90, B), 'C15': (113.5, 102.3, 0, F),
-    'TP25': (119.5, 110.0, 0, F), 'TP24': (97.0, 111.0, 0, F), 'TP26': (106.5, 115.0, 0, F), 'TP14_': None,
+    'VCO1': (111.0, 110.0, 0, B), 'C14': (105.4, 107.5, 90, B), 'C33': (105.4, 110.1, 0, B), 'C13': (105.4, 111.9, 0, B),
+    'C22': (116.6, 111.7, 0, B), 'R18': (116.6, 108.1, 0, B), 'R19': (116.6, 109.9, 0, B),
+    'R22': (119.3, 109.3, 90, B), 'R20': (116.6, 105.0, 0, B), 'C15': (119.3, 105.9, 90, B),
+    'TP25': (116.0, 121.5, 0, F), 'TP24': (100.0, 121.5, 0, F), 'TP26': (108.0, 121.5, 0, F), 'TP14_': None,
     'C17': (106.8, 101.5, 0, F),
     # --- virtual driver + feedback comparator
-    'U1': (131.4, 104.5, 0, F), 'R7': (116.8, 105.5, 0, F), 'C32': (116.8, 107.5, 0, F),
-    'C7': (131.5, 101.5, 90, F), 'C8': (131.5, 104.5, 90, F), 'R10': (139.3, 104.5, 90, F), 'C9': (140.3, 109.0, -90, F),
-    'U2': (127.7, 112.5, 0, B), 'C6': (128.9, 109.5, 0, B), 'R47': (131.6, 112.5, 90, B), 'R51': (128.9, 115.5, 180, B), 'C18': (124.5, 109.5, 0, B),
-    'TP7': (125.0, 118.5, 0, F),
-    'U10': (101.0, 112.8, 0, F), 'C10': (101.0, 116.0, 0, F),
+    'U1': (133.0, 106.5, 0, F), 'R7': (141.0, 103.0, 0, F), 'C32': (141.0, 105.0, 0, F),
+    'C7': (131.5, 101.5, 90, F), 'C8': (131.5, 104.5, 90, F), 'R10': (141.0, 107.0, 0, F), 'C9': (141.0, 109.0, 0, F),
+    'U2': (128.0, 115.5, 0, B), 'C6': (128.9, 109.5, 0, B), 'R47': (125.5, 111.8, 90, B), 'R51': (127.5, 111.8, 90, B), 'C18': (124.5, 109.5, 0, B),
+    'TP7': (124.0, 121.5, 0, F),
+    'U10': (97.5, 114.0, 0, F), 'C10': (101.0, 116.0, 0, F),
     'U11': (92.5, 86.5, 0, F), 'C20': (92.5, 89.3, 0, F),
     # --- LDO / battery / connectors / LEDs
-    'U4': (146.0, 100.0, 0, F), 'C16': (146.0, 96.5, 0, F), 'C26': (146.0, 103.5, 0, F),
-    'D3': (146.0, 107.0, 0, F), 'R11': (146.0, 109.5, 0, F),
+    'U4': (146.0, 106.0, 0, F), 'C16': (146.0, 96.5, 0, F), 'C26': (146.0, 103.5, 0, F),
+    'D3': (144.0, 112.0, 90, F), 'R11': (142.0, 112.0, 90, F),
     'BT1': (183.5, 88.5, 180, F),
-    'J1': (75.7, 108.0, -90, F), 'D4': (92.5, 117.5, 0, F), 'R13': (88.8, 117.5, 0, F),
+    'J1': (75.7, 108.0, -90, F), 'D4': (91.5, 118.5, 90, F), 'R13': (89.0, 118.5, 90, F),
     # --- GND test points
     'TP1': (138.9, 70.0, 0, F), 'TP2': (142.5, 97.0, 0, F), 'TP5': (104.9, 118.0, 0, F), 'TP9': (116.5, 120.0, 0, F),
     'TP13': (138.5, 100.0, 0, F), 'TP15': (92.0, 113.5, 0, F), 'TP16': (104.0, 124.0, 0, F), 'TP17': (93.5, 119.0, 0, F),
@@ -163,6 +163,32 @@ orient_top('C9', 'FB')
 orient_top('D2', 'Net-(D2-K)')
 for ref in ('C28', 'C29', 'C30', 'C54'):
     orient_top(ref, 'Out+')
+
+
+def orient_left(ref, netname):
+    """horizontal 2-pad part: put the pad of `netname` on the left (toward the IC it serves)"""
+    fp = board.FindFootprintByReference(ref)
+    pads = sorted(fp.Pads(), key=lambda q: q.GetPosition().x)
+    if pads[0].GetNetname() != netname:
+        fp.SetOrientationDegrees(fp.GetOrientationDegrees() + 180)
+
+
+# rows: pads that connect to the neighbour / to the IC face the same way (sense strings chain top-bottom-top...)
+for ref, top in (('C3', 'Net-(C3-Pad2)'), ('R5', 'Net-(C3-Pad2)'), ('R6', 'Net-(R37-Pad1)'), ('R37', 'Net-(R37-Pad1)'),
+                 ('C2', 'Net-(C2-Pad2)'), ('R2', 'Net-(C2-Pad2)'), ('R3', 'Net-(R3-Pad2)'), ('R4', 'Net-(R3-Pad2)'),
+                 ('R43', 'Net-(IC3--IN)'), ('R44', 'Net-(IC3-+IN)'), ('R45', 'Net-(IC3--IN)'), ('C4', 'Net-(IC3--IN)'),
+                 ('R46', 'Net-(IC3-+IN)'), ('C5', 'Net-(IC3-+IN)'),
+                 ('C11', 'Is'), ('R8', '5V'), ('R12', 'GND'), ('R25', '5V'), ('R24', 'GND'),   # bottoms: 2.5Va -> U3.4, IN+ -> U3.3
+                 ('C14', 'Net-(VCO1-C1B)'), ('R22', 'CTRL'), ('C15', 'Net-(C15-Pad2)'),
+                 ('R47', '5V'), ('R51', 'GND'), ('R13', 'Out+'), ('R11', '5V')):
+    try:
+        orient_top(ref, top)
+    except Exception as e:
+        print('  orient_top skipped', ref, e)
+for ref, left in (('R7', 'Net-(U1-DT)'), ('C32', 'Net-(U1-DT)'), ('R10', 'Net-(U1-VOB)'), ('C9', 'FB'),
+                  ('C13', 'GND'), ('C33', 'GND'),                                                    # pin-side pad on the right, toward VCO1
+                  ('R18', 'Net-(VCO1-R1)'), ('R19', 'Net-(VCO1-R2)'), ('C22', 'Is_square'), ('R20', 'CTRL')):
+    orient_left(ref, left)
 def _bbox(fp, m=0.0):
     bb = fp.GetBoundingBox(False, False)
     return (pcbnew.ToMM(bb.GetLeft()) - m, pcbnew.ToMM(bb.GetTop()) - m, pcbnew.ToMM(bb.GetRight()) + m, pcbnew.ToMM(bb.GetBottom()) + m)
@@ -172,7 +198,7 @@ def _overlap(a, b):
     return a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
 
 
-KEEP_RECTS = [(88.7, 74.0, 94.3, 84.0), (119.5, 77.0, 122.5, 86.0),   # 5 mm C1->S1 and 2.5 mm C47->S2 tank tracks
+KEEP_RECTS = [(97.3, 67.5, 102.7, 83.0), (119.5, 77.0, 122.5, 86.0),   # C58/C1 column + S1 link, 2.5 mm C47->S2 tank track
               (98.0, 82.5, 102.6, 99.5), (117.4, 85.3, 122.0, 99.5), (102.9, 79.5, 117.1, 90.0), (102, 79.5, 118, 82.0), BUS, TANK,
               (102.6, 90.2, 117.4, 101.0),      # low-side GND island (fixed GND via array)
               (118.9, 83.6, 120.3, 85.0)]        # G2 gate via
@@ -267,7 +293,7 @@ DECAP = [('C17', 'VCO1', '16', '5V'), ('C18', 'U2', '5', '5V'), ('C6', 'U2', '4'
          ('C36', 'U3', '5', '5V'), ('C25', 'U3', '4', '2.5Va'),
          ('C48', 'IC3', '7', '5V'), ('C49', 'IC3', '4', '-5V'), ('C12', 'IC3', '7', '5V'),
          ('C38', 'IC2', '4', '5V'), ('C39', 'IC2', '1', '-5V'),
-         ('C7', 'U1', '16', '5V'), ('C8', 'U1', '11', '5V'), ('C32', 'U1', '6', 'Net-(U1-DT)'),
+         ('C7', 'U1', '16', '5V'), ('C8', 'U1', '11', '5V'),
          ('C26', 'U4', '1', '5V'), ('C16', 'U4', '6', 'Net-(U4-EN)'),
          ('C20', 'U11', '5', '5V'), ('C10', 'U10', '5', '5V'),
          ('C61', 'S1_Gate_Driver1', '11', '5V', F), ('C52', 'S1_Gate_Driver1', '3', '5V', F), 
@@ -308,6 +334,18 @@ def place_between(cap, ic, pinA, netA, pinB, netB, offs=(1.9, 2.5, 3.1, 3.7), la
                 return True
     print('  place_between: no spot for', cap, 'near', ic, pinA, pinB)
     return False
+
+
+# flying cap of the charge pump: centred between its two pins, just outside the package
+p5, p6 = pad_xy('IC2', '5'), pad_xy('IC2', '6')
+icc = board.FindFootprintByReference('IC2').GetPosition()
+mx, my = (p5[0] + p6[0]) / 2, (p5[1] + p6[1]) / 2
+vx, vy = mx - pcbnew.ToMM(icc.x), my - pcbnew.ToMM(icc.y); vn = math.hypot(vx, vy)
+c40 = board.FindFootprintByReference('C40')
+c40.SetPosition(P(mx + vx / vn * 1.9, my + vy / vn * 1.9)); c40.SetOrientationDegrees(90 if abs(p5[0] - p6[0]) < abs(p5[1] - p6[1]) else 0)
+if math.hypot(pad_xy('C40', '1')[0] - p5[0], pad_xy('C40', '1')[1] - p5[1]) > math.hypot(pad_xy('C40', '2')[0] - p5[0], pad_xy('C40', '2')[1] - p5[1]):
+    c40.SetOrientationDegrees(c40.GetOrientationDegrees() + 180)
+
 
 
 PENDING.update(r[0] for r in DECAP)
@@ -466,17 +504,6 @@ def fix_footprints():
 
 
 fix_footprints()
-# flying cap of the charge pump: centred between its two pins, just outside the package
-p5, p6 = pad_xy('IC2', '5'), pad_xy('IC2', '6')
-icc = board.FindFootprintByReference('IC2').GetPosition()
-mx, my = (p5[0] + p6[0]) / 2, (p5[1] + p6[1]) / 2
-vx, vy = mx - pcbnew.ToMM(icc.x), my - pcbnew.ToMM(icc.y); vn = math.hypot(vx, vy)
-c40 = board.FindFootprintByReference('C40')
-c40.SetPosition(P(mx + vx / vn * 1.9, my + vy / vn * 1.9)); c40.SetOrientationDegrees(90 if abs(p5[0] - p6[0]) < abs(p5[1] - p6[1]) else 0)
-if math.hypot(pad_xy('C40', '1')[0] - p5[0], pad_xy('C40', '1')[1] - p5[1]) > math.hypot(pad_xy('C40', '2')[0] - p5[0], pad_xy('C40', '2')[1] - p5[1]):
-    c40.SetOrientationDegrees(c40.GetOrientationDegrees() + 180)
-
-
 # ---------------------------------------------------------------- 4) zones
 ZONES = []
 
@@ -517,8 +544,8 @@ bx0, by0, bx1, by1 = BOARD['x0'], BOARD['y0'], BOARD['x1'], BOARD['y1']
 PWR_BLOCK = (87.0, 73.9, 124.0, 100.0)
 zone('GND', CU4, [(bx0, by0), (87.0, by0), (87.0, 100.0), (124.0, 100.0), (124.0, by0), (bx1, by0), (bx1, by1), (bx0, by1)], 0, clearance=0.15)
 zone('GND', (F, B, IN2), rect(86.9, 83.0, 98.0, 101.0), 1, clearance=0.15)   # S1 driver area (In1 is 5V here)
+zone('GND', (F,), rect(86.9, 79.0, 98.0, 83.0), 2, clearance=0.15)            # F.Cu strip above it (U11 / C20); B/In1 there is the Out+ neck
 zone('GND', CU4, rect(102.6, 90.2, 117.4, 101.0), 1, clearance=0.15)        # low-side sources + decoupling caps
-keepout(rect(*TANK), CU4)
 # 5V plane island on In1 under the control / sense / LDO areas
 FIVEV = [(87.5, 83.5), (97.5, 83.5), (97.5, 100.0), (126, 100), (126, 68), (150, 68), (150, 122), (87.5, 122)]
 zone('5V', (IN1,), FIVEV, 1)
@@ -620,14 +647,16 @@ def fat(pts, netname, w, both=True, stitch=(), pad_ends=(True, True), link_w=1.2
         via(x, y, netname)
 
 
-fat([coil2, (coil2[0], 60.5), (c58a[0], 60.5), c58a], 'Net-(ReceiverCoil1-Pin_2)', 5.0, pad_ends=(False, True),
-    stitch=[(coil2[0] - 1.1, 62.0), (coil2[0] + 1.1, 62.0), (97.0, 59.2), (97.0, 61.8), (c58a[0] - 1.1, 62.0), (c58a[0] + 1.1, 62.0)])
-fat([c58b, c1a], 'Net-(C1-Pad1)', 5.0, back=1.4, stitch=[(c58b[0] - 1.3, (c58b[1] + c1a[1]) / 2), (c58b[0] + 1.3, (c58b[1] + c1a[1]) / 2)])
-fat([c1b, (c1b[0], 80.0), (99.0, 80.0), (99.0, 83.0)], 'S1', 5.0, both=False, pad_ends=(True, False))   # back side is the Out+ neck here
+fat([coil2, (coil2[0], 64.0), (c58a[0], 66.7), c58a], 'Net-(ReceiverCoil1-Pin_2)', 5.0, pad_ends=(False, True), link_w=2.4,
+    stitch=[(coil2[0] - 1.1, 58.0), (coil2[0] + 1.1, 58.0), (c58a[0] - 1.1, 67.0), (c58a[0] + 1.1, 67.0)])
+zone('Net-(C1-Pad1)', (F, B), rect(c58b[0] - 2.1, c58b[1] - 0.95, c1a[0] + 2.1, c1a[1] + 0.95), 5, solid=True)   # 4.2 mm pad-to-pad copper like the sample
+for x_ in (c58b[0] - 1.3, c58b[0] + 1.3):
+    via(x_, (c58b[1] + c1a[1]) / 2, 'Net-(C1-Pad1)')
+fat([c1b, (c1b[0], 83.0)], 'S1', 3.4, both=False, pad_ends=(True, False), link_w=2.4)   # straight down into the S1 island (back side is the Out+ neck)
 fat([coil1, (c47a[0], coil1[1]), (c47a[0], c47a[1] - 2.0)], 'Is-', 5.0, pad_ends=(False, False),
-    stitch=[(119.6, coil1[1] - 1.0), (119.6, coil1[1] + 1.0)])
-poly([(c47a[0], c47a[1] - 2.0), c47a], 'Is-', 1.2, F)
-fat([c47b, (c47b[0] + 0.5, 79.0), (c47b[0] + 0.5, 86.0)], 'S2', 2.5, pad_ends=(True, False), back=1.2, link_w=1.2,
+    stitch=[(119.6, coil1[1] - 1.0), (119.6, coil1[1] + 1.0), (c47a[0] - 1.1, 71.0), (c47a[0] + 1.1, 71.0)])
+poly([(c47a[0], c47a[1] - 2.0), c47a], 'Is-', 2.4, F)
+fat([c47b, (c47b[0] + 0.5, 79.0), (c47b[0] + 0.5, 86.0)], 'S2', 2.5, pad_ends=(True, False), back=1.2, link_w=2.4,
     stitch=[(c47b[0] + 0.5, 80.0), (c47b[0] + 0.5, 82.0)])
 
 # bulk caps and XT60 on the Out+ bus / GND
@@ -935,7 +964,7 @@ for _ in range(3):
 # final fill: pad-less slivers below 6 mm^2 are dropped
 for z_ in board.Zones():
     if not z_.GetIsRuleArea():
-        z_.SetMinIslandArea(int(6.0 * 1e12))
+        z_.SetMinIslandArea(int(12.0 * 1e12))
 pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 
 

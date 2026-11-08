@@ -1,7 +1,7 @@
 {
   "version": 1,
   "project": "Synchronous Rectifier.kicad_pro",
-  "current": "2026-11-08_1133",
+  "current": "2026-11-08_1601",
   "runs": {
     "2026-11-06_2313": {
       "source_hashes": {
@@ -116,6 +116,46 @@
         "pcb": "analyze_pcb.py Synchronous Rectifier.kicad_pcb"
       },
       "generated": "2026-11-08T14:32:14-06:00",
+      "pinned": false
+    },
+    "2026-11-08_1534": {
+      "source_hashes": {
+        "Synchronous Rectifier.kicad_sch": "sha256:cc176172e49f471c6869e69f51de13343c8fe53de4a82da6abb379be9b8627c1",
+        "Synchronous Rectifier.kicad_pcb": "sha256:9dfc4e362c656d19208ee9621cad2b9101f73159702e8cb8009f55b1f4f327a2",
+        "schematic.json": "sha256:c737b9e4ad427142e20ba59f044e28ed9ec38bd56a093f7051d05f9881910848",
+        "pcb.json": "sha256:630952b781c62dd61ba82a7662598fd7e7def8491b83d2246d69081af682804a"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json",
+        "cross_analysis": "cross_analysis.json",
+        "emc": "emc.json",
+        "thermal": "thermal.json"
+      },
+      "scripts": {
+        "pcb": "analyze_pcb.py Synchronous Rectifier.kicad_pcb"
+      },
+      "generated": "2026-11-08T15:34:20-06:00",
+      "pinned": false
+    },
+    "2026-11-08_1601": {
+      "source_hashes": {
+        "Synchronous Rectifier.kicad_sch": "sha256:cc176172e49f471c6869e69f51de13343c8fe53de4a82da6abb379be9b8627c1",
+        "Synchronous Rectifier.kicad_pcb": "sha256:c8f7be7890a1045a64817af0e39177a4637103816635bbe980a025ccd59e1452",
+        "schematic.json": "sha256:c737b9e4ad427142e20ba59f044e28ed9ec38bd56a093f7051d05f9881910848",
+        "pcb.json": "sha256:d3d7439d39cce0de62d3ea78bdd1001785f15e188ef1f8701c17ddf6dac56e4e"
+      },
+      "outputs": {
+        "schematic": "schematic.json",
+        "pcb": "pcb.json",
+        "cross_analysis": "cross_analysis.json",
+        "emc": "emc.json",
+        "thermal": "thermal.json"
+      },
+      "scripts": {
+        "pcb": "analyze_pcb.py Synchronous Rectifier.kicad_pcb"
+      },
+      "generated": "2026-11-08T16:01:38-06:00",
       "pinned": false
     }
   }

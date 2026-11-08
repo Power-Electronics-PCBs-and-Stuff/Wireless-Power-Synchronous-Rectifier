@@ -23,7 +23,7 @@ W_DEFAULT = 0.25
 W_THICK = 0.35
 THICK = {'5V', '-5V', 'Net-(U4-EN)', 'S1', 'S2', 'Out+'}
 VIA_D, VIA_DRILL = 0.6, 0.3
-VIA_COST = 25.0
+VIA_COST = 45.0
 TURN_COST = 0.4
 MAX_EXPAND = 1500000
 SKIP = {'GND', ''}
@@ -242,7 +242,7 @@ class Router:
         d = np.hypot(xs[None, :] - cx, ys[:, None] - cy) - rad
         return np.maximum(d, 0.0) / G
 
-    def search(self, code, sources, targets, hfield=None, plane=False):
+    def search(self, code, sources, targets, hfield=None, plane=False, max_expand=None, max_len=None):
         def h(ix, iy):
             return float(hfield[iy, ix]) if hfield is not None else 0.0
         heap, best, prev, done = [], {}, {}, set()
@@ -257,13 +257,15 @@ class Router:
                 continue
             done.add(cur)
             expanded += 1
-            if expanded > MAX_EXPAND:
+            if expanded > (max_expand or MAX_EXPAND):
                 return None
             l, ix, iy = cur
             if cur in targets or (plane and cur not in sources and self.island[iy, ix] and self.via_ok(ix, iy, code)):
                 path = [cur]
                 while cur in prev:
                     cur = prev[cur]; path.append(cur)
+                if max_len is not None and len(path) > max_len:
+                    return None
                 return path[::-1]
             for dx, dy, c in steps:
                 nx_, ny_ = ix + dx, iy + dy
@@ -389,7 +391,11 @@ class Router:
                 if gcells[(pad[1], pad[2])] & connected:
                     connected |= gcells[(pad[1], pad[2])]; continue
                 existing = set(self.copper.get(code, set()))
-                path = self.search(code, pc, existing, plane=True)
+                path = None
+                if existing:                      # nearby 5V copper (a cap already tied to the plane): join it, no new via
+                    path = self.search(code, pc, existing, max_expand=25000, max_len=40)
+                if path is None:
+                    path = self.search(code, pc, existing, plane=True)
                 if path is None:
                     self.unrouted.append((name, pad[1], pad[2])); continue
                 self.emit(code, path, width, anchors)
