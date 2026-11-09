@@ -12042,17 +12042,6 @@
 				)
 			)
 		)
-		(fp_text user "These pads connections are proposed, you can change the size and position according to your requirements. "
-			(at -26.67 -20.955 180)
-			(layer "F.Fab")
-			(uuid "ac8bba04-da00-44dc-9656-db5239a1c4a4")
-			(effects
-				(font
-					(size 0.64 0.64)
-					(thickness 0.15)
-				)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at 0 -27.65 180)
 			(size 3.15 3.15)
