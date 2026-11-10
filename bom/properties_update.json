@@ -1,0 +1,561 @@
+{
+ "BT1": {
+  "Manufacturer_Part_Number": "BC4AAB",
+  "Manufacturer_Name": "MPD",
+  "DigiKey_Part_Number": "BC4AAB-ND",
+  "BOM Comments": "DigiKey shows 16 on hand + 13,400 factory stock"
+ },
+ "C1": {
+  "BOM Comments": "UNSOURCED: 33 nF in series with the coil sees ~11 A RMS and ~210 V RMS at 250 kHz; no single 1206 part exists. Needs a parallel C0G bank (e.g. 10x KEMET C1206C332JCGACAUTO 3.3 nF 500 V C0G) or a film capacitor; schematic/PCB change required"
+ },
+ "C58": {
+  "BOM Comments": "UNSOURCED: 33 nF in series with the coil sees ~11 A RMS and ~210 V RMS at 250 kHz; no single 1206 part exists. Needs a parallel C0G bank (e.g. 10x KEMET C1206C332JCGACAUTO 3.3 nF 500 V C0G) or a film capacitor; schematic/PCB change required"
+ },
+ "C3": {
+  "Manufacturer_Part_Number": "CL10B103KB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1009-1-ND",
+  "BOM Comments": "10 nF 50 V X7R 0603"
+ },
+ "C10": {
+  "Manufacturer_Part_Number": "CL10B103KB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1009-1-ND",
+  "BOM Comments": "10 nF 50 V X7R 0603"
+ },
+ "C20": {
+  "Manufacturer_Part_Number": "CL10B103KB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1009-1-ND",
+  "BOM Comments": "10 nF 50 V X7R 0603"
+ },
+ "C2": {
+  "Manufacturer_Part_Number": "CL10B103KB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1009-1-ND",
+  "BOM Comments": "10 nF 50 V X7R 0603"
+ },
+ "C4": {
+  "Manufacturer_Part_Number": "CL10C680JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1135-1-ND",
+  "BOM Comments": "68 pF 50 V C0G 0603"
+ },
+ "C5": {
+  "Manufacturer_Part_Number": "CL10C680JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1135-1-ND",
+  "BOM Comments": "68 pF 50 V C0G 0603"
+ },
+ "C9": {
+  "BOM Comments": "UNSOURCED: schematic value is \"C\" (no capacitance given) - set the value first"
+ },
+ "C11": {
+  "Manufacturer_Part_Number": "C0603C104K5RACTU",
+  "Manufacturer_Name": "KEMET",
+  "DigiKey_Part_Number": "399-C0603C104K5RACTUCT-ND",
+  "BOM Comments": "100 nF 50 V X7R 0603 (Samsung CL10B104KB8NNNC is on 61-week backorder)"
+ },
+ "C23": {
+  "Manufacturer_Part_Number": "C0603C104K5RACTU",
+  "Manufacturer_Name": "KEMET",
+  "DigiKey_Part_Number": "399-C0603C104K5RACTUCT-ND",
+  "BOM Comments": "100 nF 50 V X7R 0603 (Samsung CL10B104KB8NNNC is on 61-week backorder)"
+ },
+ "C7": {
+  "Manufacturer_Part_Number": "C0603C104K5RACTU",
+  "Manufacturer_Name": "KEMET",
+  "DigiKey_Part_Number": "399-C0603C104K5RACTUCT-ND",
+  "BOM Comments": "100 nF 50 V X7R 0603 (Samsung CL10B104KB8NNNC is on 61-week backorder)"
+ },
+ "C21": {
+  "Manufacturer_Part_Number": "C0603C104K5RACTU",
+  "Manufacturer_Name": "KEMET",
+  "DigiKey_Part_Number": "399-C0603C104K5RACTUCT-ND",
+  "BOM Comments": "100 nF 50 V X7R 0603 (Samsung CL10B104KB8NNNC is on 61-week backorder)"
+ },
+ "C13": {
+  "Manufacturer_Part_Number": "CL10C100JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1027-1-ND",
+  "BOM Comments": "10 pF 50 V C0G 0603"
+ },
+ "C33": {
+  "Manufacturer_Part_Number": "CL10C100JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1027-1-ND",
+  "BOM Comments": "10 pF 50 V C0G 0603"
+ },
+ "C22": {
+  "Manufacturer_Part_Number": "CL10C100JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1027-1-ND",
+  "BOM Comments": "10 pF 50 V C0G 0603"
+ },
+ "C14": {
+  "Manufacturer_Part_Number": "GRM1885C1H272JA01D",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-3283-1-ND",
+  "BOM Comments": "2.7 nF 50 V C0G 0603"
+ },
+ "C15": {
+  "Manufacturer_Part_Number": "CC0603KRX7R8BB184",
+  "Manufacturer_Name": "YAGEO",
+  "DigiKey_Part_Number": "13-CC0603KRX7R8BB184CT-ND",
+  "BOM Comments": "180 nF 25 V X7R 0603 (no 50 V 0.18 uF 0603 stocked; node is 5 V)"
+ },
+ "C19": {
+  "Manufacturer_Part_Number": "UPW2A471MHD",
+  "Manufacturer_Name": "Nichicon",
+  "DigiKey_Part_Number": "493-1985-ND",
+  "BOM Comments": "470 uF 100 V substituted for 500 uF; 16 mm dia, 7.5 mm pitch, 31.5 mm tall; ripple 1.31 A @100 kHz; status Not-For-New-Designs (Panasonic EEU-FC2A471 is obsolete)"
+ },
+ "C27": {
+  "Manufacturer_Part_Number": "UPW2A471MHD",
+  "Manufacturer_Name": "Nichicon",
+  "DigiKey_Part_Number": "493-1985-ND",
+  "BOM Comments": "470 uF 100 V substituted for 500 uF; 16 mm dia, 7.5 mm pitch, 31.5 mm tall; ripple 1.31 A @100 kHz; status Not-For-New-Designs (Panasonic EEU-FC2A471 is obsolete)"
+ },
+ "C32": {
+  "Manufacturer_Part_Number": "CL10C101JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1008-1-ND",
+  "BOM Comments": "100 pF 50 V C0G 0603"
+ },
+ "C24": {
+  "Manufacturer_Part_Number": "CL10C101JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1008-1-ND",
+  "BOM Comments": "100 pF 50 V C0G 0603"
+ },
+ "C31": {
+  "Manufacturer_Part_Number": "CL10C101JB8NNNC",
+  "Manufacturer_Name": "Samsung Electro-Mechanics",
+  "DigiKey_Part_Number": "1276-1008-1-ND",
+  "BOM Comments": "100 pF 50 V C0G 0603"
+ },
+ "C38": {
+  "Manufacturer_Part_Number": "GRM188Z71E225KE43D",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-GRM188Z71E225KE43DCT-ND",
+  "BOM Comments": "2.2 uF 25 V 0603 (DigiKey lists X7R; Murata \"Z7\" code is X7T class)"
+ },
+ "C26": {
+  "Manufacturer_Part_Number": "GRM188Z71E225KE43D",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-GRM188Z71E225KE43DCT-ND",
+  "BOM Comments": "2.2 uF 25 V 0603 (DigiKey lists X7R; Murata \"Z7\" code is X7T class)"
+ },
+ "C39": {
+  "Manufacturer_Part_Number": "GRM188Z71E225KE43D",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-GRM188Z71E225KE43DCT-ND",
+  "BOM Comments": "2.2 uF 25 V 0603 (DigiKey lists X7R; Murata \"Z7\" code is X7T class)"
+ },
+ "C40": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C16": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C36": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C6": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C17": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C8": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C49": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C52": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C18": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C53": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C62": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C61": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C25": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C48": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C12": {
+  "Manufacturer_Part_Number": "UMK107AB7105KA-T",
+  "Manufacturer_Name": "Taiyo Yuden",
+  "DigiKey_Part_Number": "587-3247-1-ND",
+  "BOM Comments": "1 uF 50 V X7R 0603"
+ },
+ "C47": {
+  "Manufacturer_Part_Number": "C1206C105K1RACTU",
+  "Manufacturer_Name": "KEMET",
+  "DigiKey_Part_Number": "399-C1206C105K1RACTUCT-ND",
+  "BOM Comments": "1 uF 100 V X7R 1206 (Murata GRM31CR72A105KA01L backordered to Feb 2027). Also in the 11 A tank path - same cap-bank concern as C1/C58"
+ },
+ "C54": {
+  "Manufacturer_Part_Number": "GRJ31CZ72A475KE01L",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-GRJ31CZ72A475KE01LCT-ND",
+  "BOM Comments": "4.7 uF 100 V X7R 1206 soft-termination (GRM31CR72A475KE11L not stocked)"
+ },
+ "C28": {
+  "Manufacturer_Part_Number": "GRJ31CZ72A475KE01L",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-GRJ31CZ72A475KE01LCT-ND",
+  "BOM Comments": "4.7 uF 100 V X7R 1206 soft-termination (GRM31CR72A475KE11L not stocked)"
+ },
+ "C30": {
+  "Manufacturer_Part_Number": "GRJ31CZ72A475KE01L",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-GRJ31CZ72A475KE01LCT-ND",
+  "BOM Comments": "4.7 uF 100 V X7R 1206 soft-termination (GRM31CR72A475KE11L not stocked)"
+ },
+ "C29": {
+  "Manufacturer_Part_Number": "GRJ31CZ72A475KE01L",
+  "Manufacturer_Name": "Murata Electronics",
+  "DigiKey_Part_Number": "490-GRJ31CZ72A475KE01LCT-ND",
+  "BOM Comments": "4.7 uF 100 V X7R 1206 soft-termination (GRM31CR72A475KE11L not stocked)"
+ },
+ "D2": {
+  "Manufacturer_Part_Number": "BAT46W",
+  "Manufacturer_Name": "Diotec Semiconductor",
+  "DigiKey_Part_Number": "4878-BAT46WCT-ND",
+  "BOM Comments": "SOD-123 part on the SOD-123F footprint (pad pitch compatible). Vishay BAT46W-E3-08 backordered to Jan 2027"
+ },
+ "D1": {
+  "Manufacturer_Part_Number": "BAT46W",
+  "Manufacturer_Name": "Diotec Semiconductor",
+  "DigiKey_Part_Number": "4878-BAT46WCT-ND",
+  "BOM Comments": "SOD-123 part on the SOD-123F footprint (pad pitch compatible). Vishay BAT46W-E3-08 backordered to Jan 2027"
+ },
+ "D3": {
+  "Manufacturer_Part_Number": "LTST-C190GKT",
+  "Manufacturer_Name": "Lite-On Inc.",
+  "DigiKey_Part_Number": "160-LTST-C190GKTCT-ND",
+  "BOM Comments": "green 0603 LED"
+ },
+ "D4": {
+  "Manufacturer_Part_Number": "LTST-C190GKT",
+  "Manufacturer_Name": "Lite-On Inc.",
+  "DigiKey_Part_Number": "160-LTST-C190GKTCT-ND",
+  "BOM Comments": "green 0603 LED"
+ },
+ "D6": {
+  "Manufacturer_Part_Number": "MMSZ5231BT1G",
+  "Manufacturer_Name": "onsemi",
+  "DigiKey_Part_Number": "MMSZ5231BT1GOSCT-ND",
+  "BOM Comments": "5.1 V 500 mW Zener SOD-123"
+ },
+ "D5": {
+  "Manufacturer_Part_Number": "MMSZ5231BT1G",
+  "Manufacturer_Name": "onsemi",
+  "DigiKey_Part_Number": "MMSZ5231BT1GOSCT-ND",
+  "BOM Comments": "5.1 V 500 mW Zener SOD-123"
+ },
+ "IC2": {
+  "Manufacturer_Part_Number": "LM2776DBVR",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-43957-1-ND"
+ },
+ "IC3": {
+  "Manufacturer_Part_Number": "OPA656UB/2K5",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-OPA656UB/2K5CT-ND",
+  "BOM Comments": "schematic MPN field said ADA4817-1ARDZ-R7 (left over from the sample board) - corrected to the OPA656 the symbol and footprint describe"
+ },
+ "J1": {
+  "Manufacturer_Part_Number": "XT60PW-M",
+  "Manufacturer_Name": "AMASS",
+  "BOM Comments": "AMAZON: right-angle PCB-mount XT60 male; candidate listings B0DTGCK8VF (Gaslos, 90-degree XT60PW male/female) and B07VRLQ2C5 (Yiqigou, XT60PW pairs). Amazon blocks automated browsing - confirm the listing shows the XT60PW-M (male, PCB, 90 degree) before ordering"
+ },
+ "Q4": {
+  "Manufacturer_Part_Number": "EPC2305",
+  "Manufacturer_Name": "EPC",
+  "DigiKey_Part_Number": "917-EPC2305CT-ND",
+  "BOM Comments": "150 V GaN FET"
+ },
+ "Q1": {
+  "Manufacturer_Part_Number": "EPC2305",
+  "Manufacturer_Name": "EPC",
+  "DigiKey_Part_Number": "917-EPC2305CT-ND",
+  "BOM Comments": "150 V GaN FET"
+ },
+ "Q2": {
+  "Manufacturer_Part_Number": "EPC2305",
+  "Manufacturer_Name": "EPC",
+  "DigiKey_Part_Number": "917-EPC2305CT-ND",
+  "BOM Comments": "150 V GaN FET"
+ },
+ "Q3": {
+  "Manufacturer_Part_Number": "EPC2305",
+  "Manufacturer_Name": "EPC",
+  "DigiKey_Part_Number": "917-EPC2305CT-ND",
+  "BOM Comments": "150 V GaN FET"
+ },
+ "R1": {
+  "Manufacturer_Part_Number": "ERJ-3RQF3R3V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P3.3AJCT-ND",
+  "BOM Comments": "3.3 ohm substituted for 3.2 ohm (3.2 is not an E24/E96 value stocked in 0603)"
+ },
+ "R40": {
+  "Manufacturer_Part_Number": "ERJ-3RQF3R3V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P3.3AJCT-ND",
+  "BOM Comments": "3.3 ohm substituted for 3.2 ohm (3.2 is not an E24/E96 value stocked in 0603)"
+ },
+ "R41": {
+  "Manufacturer_Part_Number": "ERJ-3RQF3R3V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P3.3AJCT-ND",
+  "BOM Comments": "3.3 ohm substituted for 3.2 ohm (3.2 is not an E24/E96 value stocked in 0603)"
+ },
+ "R42": {
+  "Manufacturer_Part_Number": "ERJ-3RQF3R3V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P3.3AJCT-ND",
+  "BOM Comments": "3.3 ohm substituted for 3.2 ohm (3.2 is not an E24/E96 value stocked in 0603)"
+ },
+ "R7": {
+  "Manufacturer_Part_Number": "ERJ-3EKF6041V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P6.04KHCT-ND"
+ },
+ "R8": {
+  "Manufacturer_Part_Number": "ERJ-3EKF1002V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P10.0KHCT-ND"
+ },
+ "R12": {
+  "Manufacturer_Part_Number": "ERJ-3EKF1002V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P10.0KHCT-ND"
+ },
+ "R10": {
+  "Manufacturer_Part_Number": "ERJ-3GEY0R00V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P0.0GCT-ND",
+  "BOM Comments": "0 ohm jumper"
+ },
+ "R11": {
+  "Manufacturer_Part_Number": "ERJ-3EKF1001V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P1.00KHCT-ND"
+ },
+ "R43": {
+  "Manufacturer_Part_Number": "ERJ-3EKF1001V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P1.00KHCT-ND"
+ },
+ "R44": {
+  "Manufacturer_Part_Number": "ERJ-3EKF1001V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P1.00KHCT-ND"
+ },
+ "R13": {
+  "Manufacturer_Part_Number": "ERJ-3EKF3302V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P33.0KHCT-ND"
+ },
+ "R18": {
+  "Manufacturer_Part_Number": "ERJ-3EKF3322V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P33.2KHCT-ND"
+ },
+ "R19": {
+  "Manufacturer_Part_Number": "ERJ-3EKF6811V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P6.81KHCT-ND",
+  "BOM Comments": "DigiKey page is tagged Marketplace - may ship separately"
+ },
+ "R20": {
+  "Manufacturer_Part_Number": "ERJ-3EKF3301V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P3.30KHCT-ND"
+ },
+ "R22": {
+  "Manufacturer_Part_Number": "ERJ-3EKF3301V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P3.30KHCT-ND"
+ },
+ "R24": {
+  "Manufacturer_Part_Number": "ERJ-3EKF4701V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P4.70KHCT-ND"
+ },
+ "R51": {
+  "Manufacturer_Part_Number": "ERJ-3EKF4701V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P4.70KHCT-ND"
+ },
+ "R25": {
+  "Manufacturer_Part_Number": "ERJ-3EKF4701V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P4.70KHCT-ND"
+ },
+ "R47": {
+  "Manufacturer_Part_Number": "ERJ-3EKF4701V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P4.70KHCT-ND"
+ },
+ "R29": {
+  "Manufacturer_Part_Number": "ERJ-3EKF1502V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P15.0KHCT-ND"
+ },
+ "R28": {
+  "Manufacturer_Part_Number": "ERJ-3EKF1502V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P15.0KHCT-ND"
+ },
+ "R37": {
+  "Manufacturer_Part_Number": "ERJ-3EKF2202V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P22.0KHCT-ND"
+ },
+ "R4": {
+  "Manufacturer_Part_Number": "ERJ-3EKF2202V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P22.0KHCT-ND"
+ },
+ "R2": {
+  "Manufacturer_Part_Number": "ERJ-3EKF2202V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P22.0KHCT-ND"
+ },
+ "R6": {
+  "Manufacturer_Part_Number": "ERJ-3EKF2202V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P22.0KHCT-ND"
+ },
+ "R5": {
+  "Manufacturer_Part_Number": "ERJ-3EKF2202V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P22.0KHCT-ND"
+ },
+ "R3": {
+  "Manufacturer_Part_Number": "ERJ-3EKF2202V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P22.0KHCT-ND"
+ },
+ "R45": {
+  "Manufacturer_Part_Number": "ERJ-3EKF4703V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P470KHCT-ND"
+ },
+ "R46": {
+  "Manufacturer_Part_Number": "ERJ-3EKF4703V",
+  "Manufacturer_Name": "Panasonic Industry",
+  "DigiKey_Part_Number": "P470KHCT-ND"
+ },
+ "ReceiverCoil1": {
+  "Manufacturer_Part_Number": "0389690002",
+  "Manufacturer_Name": "Molex",
+  "DigiKey_Part_Number": "WM7469-ND",
+  "BOM Comments": "2-circuit barrier terminal block, 12.7 mm pitch, PC-pin"
+ },
+ "S1_Gate_Driver1": {
+  "Manufacturer_Part_Number": "SI8274GB1-IS1R",
+  "Manufacturer_Name": "Skyworks Solutions Inc.",
+  "DigiKey_Part_Number": "336-5554-1-ND"
+ },
+ "U9": {
+  "Manufacturer_Part_Number": "SI8274GB1-IS1R",
+  "Manufacturer_Name": "Skyworks Solutions Inc.",
+  "DigiKey_Part_Number": "336-5554-1-ND"
+ },
+ "U1": {
+  "Manufacturer_Part_Number": "SI8274GB1-IS1R",
+  "Manufacturer_Name": "Skyworks Solutions Inc.",
+  "DigiKey_Part_Number": "336-5554-1-ND"
+ },
+ "U2": {
+  "Manufacturer_Part_Number": "TLV3601DBVR",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-TLV3601DBVRCT-ND",
+  "BOM Comments": "SOT-23-5 part; U2 footprint is TSOT-23-5 (same land pattern)"
+ },
+ "U3": {
+  "Manufacturer_Part_Number": "TLV3601DBVR",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-TLV3601DBVRCT-ND"
+ },
+ "U4": {
+  "Manufacturer_Part_Number": "TPS7A2650DRVR",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-TPS7A2650DRVRCT-ND",
+  "BOM Comments": "SUBSTITUTE for TPS7A2550DRVR (DigiKey backordered to May 2027). TPS7A26 fixed-5V WSON-6 is pin-identical (OUT/NC/PG/EN/GND/IN, checked in both datasheets), 500 mA, Vin 2.4-18 V, needs >=1 uF out (C26 = 2.2 uF)"
+ },
+ "U11": {
+  "Manufacturer_Part_Number": "SN74AHCT1G86DBVR",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-4714-1-ND"
+ },
+ "U10": {
+  "Manufacturer_Part_Number": "SN74AHCT1G86DBVR",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-4714-1-ND"
+ },
+ "VCO1": {
+  "Manufacturer_Part_Number": "SN74LV4046ADR",
+  "Manufacturer_Name": "Texas Instruments",
+  "DigiKey_Part_Number": "296-21049-1-ND",
+  "BOM Comments": "cut-tape (DR) version of the SN74LV4046AD tube part; identical device"
+ }
+}

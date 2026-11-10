@@ -3788,7 +3788,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "TPS7A25550DRVR:TPS7A2550DRVR"
+		(symbol "TPS7A2650DRVR:TPS7A2650DRVR"
 			(pin_names
 				(offset 0.254)
 			)
@@ -3807,7 +3807,7 @@
 					)
 				)
 			)
-			(property "Value" "TPS7A2550DRVR"
+			(property "Value" "TPS7A2650DRVR"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3817,7 +3817,7 @@
 					)
 				)
 			)
-			(property "Footprint" "DRV0006A-IPC_A"
+			(property "Footprint" "DRV0006A"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3829,7 +3829,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://www.ti.com/lit/gpn/tps7a25"
+			(property "Datasheet" "https://www.ti.com/lit/gpn/tps7a26"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3862,7 +3862,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "TPS7A2550DRVR"
+			(property "ki_keywords" "TPS7A2650DRVR"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3873,7 +3873,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "DRV0006A-IPC_A DRV0006A-IPC_B DRV0006A-IPC_C DRV0006A-MFG"
+			(property "ki_fp_filters" "DRV0006A DRV0006A_NV"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3884,10 +3884,10 @@
 					)
 				)
 			)
-			(symbol "TPS7A2550DRVR_0_1"
+			(symbol "TPS7A2650DRVR_0_1"
 				(polyline
 					(pts
-						(xy 5.08 5.08) (xy 5.08 -25.4)
+						(xy -12.7 15.24) (xy -12.7 -15.24)
 					)
 					(stroke
 						(width 0.2032)
@@ -3899,7 +3899,7 @@
 				)
 				(polyline
 					(pts
-						(xy 5.08 -25.4) (xy 30.48 -25.4)
+						(xy -12.7 -15.24) (xy 12.7 -15.24)
 					)
 					(stroke
 						(width 0.2032)
@@ -3911,7 +3911,7 @@
 				)
 				(polyline
 					(pts
-						(xy 30.48 5.08) (xy 5.08 5.08)
+						(xy 12.7 15.24) (xy -12.7 15.24)
 					)
 					(stroke
 						(width 0.2032)
@@ -3923,7 +3923,7 @@
 				)
 				(polyline
 					(pts
-						(xy 30.48 -25.4) (xy 30.48 5.08)
+						(xy 12.7 -15.24) (xy 12.7 15.24)
 					)
 					(stroke
 						(width 0.2032)
@@ -3934,7 +3934,7 @@
 					)
 				)
 				(pin power_in line
-					(at 35.56 0 180)
+					(at 17.78 10.16 180)
 					(length 5.08)
 					(name "OUT"
 						(effects
@@ -3951,10 +3951,10 @@
 						)
 					)
 				)
-				(pin unspecified line
-					(at 35.56 -15.24 180)
+				(pin input line
+					(at 17.78 0 180)
 					(length 5.08)
-					(name "NC"
+					(name "FB_NC"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3970,7 +3970,7 @@
 					)
 				)
 				(pin open_collector line
-					(at 35.56 -10.16 180)
+					(at 17.78 -5.08 180)
 					(length 5.08)
 					(name "PG"
 						(effects
@@ -3988,7 +3988,7 @@
 					)
 				)
 				(pin input line
-					(at 0 -10.16 0)
+					(at -17.78 0 0)
 					(length 5.08)
 					(name "EN"
 						(effects
@@ -4006,7 +4006,7 @@
 					)
 				)
 				(pin power_in line
-					(at 35.56 -20.32 180)
+					(at 17.78 -10.16 180)
 					(length 5.08)
 					(name "GND"
 						(effects
@@ -4024,7 +4024,7 @@
 					)
 				)
 				(pin power_in line
-					(at 0 0 0)
+					(at -17.78 10.16 0)
 					(length 5.08)
 					(name "IN"
 						(effects
@@ -4041,10 +4041,10 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 35.56 -22.86 180)
+				(pin unspecified line
+					(at 17.78 -12.7 180)
 					(length 5.08)
-					(name "Thermal_Pad"
+					(name "PAD"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5096,6 +5096,12 @@
 		(uuid "1e8e2fac-865c-4841-af6f-36f77e81023d")
 	)
 	(junction
+		(at 144.78 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1ffc073e-4106-4dbb-a598-d9c9d72a9d9b")
+	)
+	(junction
 		(at 331.47 397.51)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5144,12 +5150,6 @@
 		(uuid "3713d932-f257-41d9-b907-edb31e58ec65")
 	)
 	(junction
-		(at 144.78 116.84)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "39fc4652-d6bb-40c0-91ef-bb417a9bde52")
-	)
-	(junction
 		(at 327.66 290.83)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5190,6 +5190,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4851bb99-8b77-4fb1-8670-27b3763e9d4b")
+	)
+	(junction
+		(at 180.34 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4a3005a5-2f44-4756-ab26-98cdb503192b")
 	)
 	(junction
 		(at 259.08 300.99)
@@ -5384,12 +5390,6 @@
 		(uuid "b5b75d37-dfdc-464d-8708-5987b00e8a3b")
 	)
 	(junction
-		(at 180.34 137.16)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bc5cc231-101d-4705-9ffe-e15fdc22cdeb")
-	)
-	(junction
 		(at 199.39 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5406,6 +5406,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bf1a0f42-ce39-4a05-9655-ea40ca9ae2b7")
+	)
+	(junction
+		(at 180.34 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c540cd24-eef3-4656-8fe3-cbf0b136558f")
 	)
 	(junction
 		(at 331.47 306.07)
@@ -5474,12 +5480,6 @@
 		(uuid "e1b250a5-4763-4af1-bb51-d316fc2e48f6")
 	)
 	(junction
-		(at 180.34 132.08)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e1e640b0-ff29-4712-93f9-3ac39546a484")
-	)
-	(junction
 		(at 278.13 67.31)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5496,12 +5496,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ebf97021-e1a8-474a-bbb9-b98e95b57317")
-	)
-	(junction
-		(at 180.34 139.7)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ee3dddd1-ed3b-4f6a-8159-27ef282141bb")
 	)
 	(junction
 		(at 138.43 283.21)
@@ -5526,6 +5520,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f647b785-60de-465c-91b1-6af351cafe32")
+	)
+	(junction
+		(at 180.34 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6b7c071-10c4-4e55-b6f1-dc35c12ddb81")
 	)
 	(junction
 		(at 227.33 25.4)
@@ -5883,6 +5883,16 @@
 	)
 	(wire
 		(pts
+			(xy 180.34 139.7) (xy 180.34 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16ebd8d0-253c-42ba-8a05-382617e7be0e")
+	)
+	(wire
+		(pts
 			(xy 135.89 127) (xy 135.89 146.05)
 		)
 		(stroke
@@ -5913,16 +5923,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 116.84) (xy 144.78 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1a1ca18a-58cc-4050-88ca-fa9fb64423fd")
-	)
-	(wire
-		(pts
 			(xy 33.02 355.6) (xy 34.29 355.6)
 		)
 		(stroke
@@ -5943,7 +5943,7 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 116.84) (xy 144.78 115.57)
+			(xy 144.78 115.57) (xy 144.78 116.84)
 		)
 		(stroke
 			(width 0)
@@ -6400,6 +6400,16 @@
 			(type default)
 		)
 		(uuid "3e2cb715-3d82-4bc4-a9aa-e69dc91a1ba0")
+	)
+	(wire
+		(pts
+			(xy 180.34 137.16) (xy 180.34 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f1b2aff-60c6-4917-9a49-a2bf188d87f2")
 	)
 	(wire
 		(pts
@@ -6913,6 +6923,16 @@
 	)
 	(wire
 		(pts
+			(xy 180.34 132.08) (xy 180.34 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6707daa1-d05b-419a-9d44-fc4c8decd7f5")
+	)
+	(wire
+		(pts
 			(xy 292.1 394.97) (xy 294.64 394.97)
 		)
 		(stroke
@@ -6940,16 +6960,6 @@
 			(type default)
 		)
 		(uuid "6878198e-1986-45e8-a96b-aee85cb13af3")
-	)
-	(wire
-		(pts
-			(xy 180.34 137.16) (xy 180.34 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "69e05d2d-39ce-4008-9f5f-ba65fe3d7229")
 	)
 	(wire
 		(pts
@@ -7530,16 +7540,6 @@
 			(type default)
 		)
 		(uuid "92842ebd-a96a-4763-94b4-d7d8564ec0d0")
-	)
-	(wire
-		(pts
-			(xy 180.34 127) (xy 180.34 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "92bafb8c-1f27-4951-828b-91de71d7020e")
 	)
 	(wire
 		(pts
@@ -8273,16 +8273,6 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 132.08) (xy 180.34 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6e958cd-70a6-499b-bc41-c62e015c2afb")
-	)
-	(wire
-		(pts
 			(xy 236.22 181.61) (xy 236.22 180.34)
 		)
 		(stroke
@@ -8633,13 +8623,23 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 139.7) (xy 180.34 146.05)
+			(xy 180.34 127) (xy 180.34 132.08)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "e70559a7-0b7a-4c91-b503-62e511e412e4")
+	)
+	(wire
+		(pts
+			(xy 144.78 116.84) (xy 144.78 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e7c2b0f5-b4d7-4669-a574-ae2620232d56")
 	)
 	(wire
 		(pts
@@ -11940,103 +11940,6 @@
 			(project "Synchronous Rectifier"
 				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
 					(reference "R37")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "TPS7A25550DRVR:TPS7A2550DRVR")
-		(at 144.78 116.84 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "07d1a0de-bf2a-4131-89ce-a795af932997")
-		(property "Reference" "U4"
-			(at 162.56 106.68 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Value" "TPS7A2550DRVR"
-			(at 162.56 109.22 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Footprint" "TPS7A25550DRVR:DRV0006A-IPC_A"
-			(at 144.78 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/gpn/tps7a25"
-			(at 144.78 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 144.78 116.84 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "2ddc3b9e-a382-4f49-b319-5df2882d481e")
-		)
-		(pin "1"
-			(uuid "a851c9d4-01f7-491e-a84f-cb8c6b2e28de")
-		)
-		(pin "3"
-			(uuid "f23ed2af-3bf7-48a6-aa80-d5ef575839bf")
-		)
-		(pin "5"
-			(uuid "c949cd3f-4dde-4ee5-98fd-f633675dd97e")
-		)
-		(pin "4"
-			(uuid "ccbe7d45-ee8e-4356-8f58-c9acae12ee9c")
-		)
-		(pin "7"
-			(uuid "12738ca3-4905-49c1-9219-db124e085d4e")
-		)
-		(pin "6"
-			(uuid "e73378ba-6159-4421-9df3-170d8accb8f8")
-		)
-		(instances
-			(project "Synchronous Rectifier"
-				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
-					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -16354,6 +16257,103 @@
 			(project "Synchronous Rectifier"
 				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
 					(reference "TP14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TPS7A2650DRVR:TPS7A2650DRVR")
+		(at 162.56 127 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "434234d0-07e0-4bdb-9fb3-0fb201cfd31f")
+		(property "Reference" "U5"
+			(at 162.56 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "TPS7A2650DRVR"
+			(at 162.56 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "TPS7A2650DRVR:DRV0006A_NV"
+			(at 162.56 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/gpn/tps7a26"
+			(at 162.56 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "a4c9b4c0-7880-443c-b13f-1201bd90c8b1")
+		)
+		(pin "2"
+			(uuid "3b6630ab-7fea-422d-a2a9-fc5e60c65ae1")
+		)
+		(pin "7"
+			(uuid "ac12bf63-0566-4296-bfc1-91e3783298c1")
+		)
+		(pin "1"
+			(uuid "410c8cc7-9522-4380-96f8-c7af2f59fe3c")
+		)
+		(pin "4"
+			(uuid "cbb88eba-cab4-48ca-892e-c5b2c5f4d42a")
+		)
+		(pin "3"
+			(uuid "4189e342-3c17-47b3-ac07-d007632bdfd4")
+		)
+		(pin "5"
+			(uuid "e8a4de9b-ca80-4a00-b966-c7e01909c463")
+		)
+		(instances
+			(project "Synchronous Rectifier"
+				(path "/ebb6f210-1c97-44e9-a0ea-32505cd2d023"
+					(reference "U5")
 					(unit 1)
 				)
 			)

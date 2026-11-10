@@ -1,0 +1,44 @@
+Reference,Qty,Value,Footprint,MPN,Manufacturer,DigiKey,DK_Stock,Mouser,MO_Stock,Chosen_Distributor,Datasheet,Validated,DNP,Notes
+BT1,1,BC4AAB,BAT_BC4AAB,BC4AAB,MPD,BC4AAB-ND,16,,,DigiKey,,yes (digikey.com page 2026-11-09),,"DigiKey shows 16 on hand + 13,400 factory stock"
+"C1,C58",2,33n,1206,,,,,,,,,no,,UNSOURCED: 33 nF in series with the coil sees ~11 A RMS and ~210 V RMS at 250 kHz; no single 1206 part exists. Needs a parallel C0G bank (e.g. 10x KEMET C1206C332JCGACAUTO 3.3 nF 500 V C0G) or a film capacitor; schematic/PCB change required
+"C3,C10,C20,C2",4,10n,0603,CL10B103KB8NNNC,Samsung Electro-Mechanics,1276-1009-1-ND,5504,,,DigiKey,,yes (digikey.com page 2026-11-09),,10 nF 50 V X7R 0603
+"C4,C5",2,68p,0603,CL10C680JB8NNNC,Samsung Electro-Mechanics,1276-1135-1-ND,207000,,,DigiKey,,yes (digikey.com page 2026-11-09),,68 pF 50 V C0G 0603
+C9,1,C,0603,,,,,,,,,no,,"UNSOURCED: schematic value is ""C"" (no capacitance given) - set the value first"
+"C11,C23,C7,C21",4,100n,0603,C0603C104K5RACTU,KEMET,399-C0603C104K5RACTUCT-ND,2485421,,,DigiKey,,yes (digikey.com page 2026-11-09),,100 nF 50 V X7R 0603 (Samsung CL10B104KB8NNNC is on 61-week backorder)
+"C13,C33,C22",3,10p,0603,CL10C100JB8NNNC,Samsung Electro-Mechanics,1276-1027-1-ND,206747,,,DigiKey,,yes (digikey.com page 2026-11-09),,10 pF 50 V C0G 0603
+C14,1,2.7n,0603,GRM1885C1H272JA01D,Murata Electronics,490-3283-1-ND,293979,,,DigiKey,,yes (digikey.com page 2026-11-09),,2.7 nF 50 V C0G 0603
+C15,1,180n,0603,CC0603KRX7R8BB184,YAGEO,13-CC0603KRX7R8BB184CT-ND,19322,,,DigiKey,,yes (digikey.com page 2026-11-09),,180 nF 25 V X7R 0603 (no 50 V 0.18 uF 0603 stocked; node is 5 V)
+"C19,C27",2,500u,CP_Radial_D16.0mm_P7.50mm,UPW2A471MHD,Nichicon,493-1985-ND,5222,,,DigiKey,,yes (digikey.com page 2026-11-09),,"470 uF 100 V substituted for 500 uF; 16 mm dia, 7.5 mm pitch, 31.5 mm tall; ripple 1.31 A @100 kHz; status Not-For-New-Designs (Panasonic EEU-FC2A471 is obsolete)"
+"C32,C24,C31",3,100p,0603,CL10C101JB8NNNC,Samsung Electro-Mechanics,1276-1008-1-ND,1155305,,,DigiKey,,yes (digikey.com page 2026-11-09),,100 pF 50 V C0G 0603
+"C38,C26,C39",3,2.2u,0603,GRM188Z71E225KE43D,Murata Electronics,490-GRM188Z71E225KE43DCT-ND,147724,,,DigiKey,,yes (digikey.com page 2026-11-09),,"2.2 uF 25 V 0603 (DigiKey lists X7R; Murata ""Z7"" code is X7T class)"
+"C40,C16,C36,C6,C17,C8,C49,C52,C18,C53,C62,C61,C25,C48,C12",15,1u,0603,UMK107AB7105KA-T,Taiyo Yuden,587-3247-1-ND,579237,,,DigiKey,,yes (digikey.com page 2026-11-09),,1 uF 50 V X7R 0603
+C47,1,1u,1206,C1206C105K1RACTU,KEMET,399-C1206C105K1RACTUCT-ND,31698,,,DigiKey,,yes (digikey.com page 2026-11-09),,1 uF 100 V X7R 1206 (Murata GRM31CR72A105KA01L backordered to Feb 2027). Also in the 11 A tank path - same cap-bank concern as C1/C58
+"C54,C28,C30,C29",4,4.71u,1206,GRJ31CZ72A475KE01L,Murata Electronics,490-GRJ31CZ72A475KE01LCT-ND,66536,,,DigiKey,,yes (digikey.com page 2026-11-09),,4.7 uF 100 V X7R 1206 soft-termination (GRM31CR72A475KE11L not stocked)
+"D2,D1",2,BAT46W,SOD-123F,BAT46W,Diotec Semiconductor,4878-BAT46WCT-ND,83359,,,DigiKey,https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf,yes (digikey.com page 2026-11-09),,SOD-123 part on the SOD-123F footprint (pad pitch compatible). Vishay BAT46W-E3-08 backordered to Jan 2027
+"D3,D4",2,LED,0603,LTST-C190GKT,Lite-On Inc.,160-LTST-C190GKTCT-ND,1187734,,,DigiKey,,yes (digikey.com page 2026-11-09),,green 0603 LED
+"D6,D5",2,5V1,SOD-123,MMSZ5231BT1G,onsemi,MMSZ5231BT1GOSCT-ND,76458,,,DigiKey,https://www.onsemi.com/pdf/datasheet/mmsz5221bt1-d.pdf,yes (digikey.com page 2026-11-09),,5.1 V 500 mW Zener SOD-123
+IC2,1,LM2776DBVR,DBV0006A_N,LM2776DBVR,Texas Instruments,296-43957-1-ND,46809,595-LM2776DBVR,,DigiKey,http://www.ti.com/lit/gpn/lm2776,yes (digikey.com page 2026-11-09),,
+IC3,1,OPA656UB/2K5,D8,OPA656UB/2K5,Texas Instruments,296-OPA656UB/2K5CT-ND,3184,584-ADA4817-1ARDZ-R7,,DigiKey,https://www.ti.com/lit/gpn/opa656,yes (digikey.com page 2026-11-09),,schematic MPN field said ADA4817-1ARDZ-R7 (left over from the sample board) - corrected to the OPA656 the symbol and footprint describe
+J1,1,XT60PW-M,AMASS_XT60PW-M,XT60PW-M,AMASS,,,,,Amazon,,no,,"AMAZON: right-angle PCB-mount XT60 male; candidate listings B0DTGCK8VF (Gaslos, 90-degree XT60PW male/female) and B07VRLQ2C5 (Yiqigou, XT60PW pairs). Amazon blocks automated browsing - confirm the listing shows the XT60PW-M (male, PCB, 90 degree) before ordering"
+"Q4,Q1,Q2,Q3",4,EPC2305,EPC2305,EPC2305,EPC,917-EPC2305CT-ND,15878,,,DigiKey,https://epc-co.com/epc/products/gan-fets-and-ics/epc2305,yes (digikey.com page 2026-11-09),,150 V GaN FET
+"R1,R40,R41,R42",4,3.2,0603,ERJ-3RQF3R3V,Panasonic Industry,P3.3AJCT-ND,5604,,,DigiKey,,yes (digikey.com page 2026-11-09),,3.3 ohm substituted for 3.2 ohm (3.2 is not an E24/E96 value stocked in 0603)
+R7,1,6.04k,0603,ERJ-3EKF6041V,Panasonic Industry,P6.04KHCT-ND,36474,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+"R8,R12",2,10k,0603,ERJ-3EKF1002V,Panasonic Industry,P10.0KHCT-ND,621467,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+R10,1,0,0603,ERJ-3GEY0R00V,Panasonic Industry,P0.0GCT-ND,4415369,,,DigiKey,,yes (digikey.com page 2026-11-09),,0 ohm jumper
+"R11,R43,R44",3,1k,0603,ERJ-3EKF1001V,Panasonic Industry,P1.00KHCT-ND,4055833,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+R13,1,33k,0603,ERJ-3EKF3302V,Panasonic Industry,P33.0KHCT-ND,93742,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+R18,1,33.2k,0603,ERJ-3EKF3322V,Panasonic Industry,P33.2KHCT-ND,89962,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+R19,1,6.81k,0603,ERJ-3EKF6811V,Panasonic Industry,P6.81KHCT-ND,1074,,,DigiKey,,yes (digikey.com page 2026-11-09),,DigiKey page is tagged Marketplace - may ship separately
+"R20,R22",2,3.3k,0603,ERJ-3EKF3301V,Panasonic Industry,P3.30KHCT-ND,359068,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+"R24,R51,R25,R47",4,4.7k,0603,ERJ-3EKF4701V,Panasonic Industry,P4.70KHCT-ND,783994,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+"R29,R28",2,15k,0603,ERJ-3EKF1502V,Panasonic Industry,P15.0KHCT-ND,48445,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+"R37,R4,R2,R6,R5,R3",6,22k,0603,ERJ-3EKF2202V,Panasonic Industry,P22.0KHCT-ND,184599,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+"R45,R46",2,470k,0603,ERJ-3EKF4703V,Panasonic Industry,P470KHCT-ND,50008,,,DigiKey,,yes (digikey.com page 2026-11-09),,
+ReceiverCoil1,1,Screw_Terminal_01x02,Molex_0389690002,0389690002,Molex,WM7469-ND,4511,,,DigiKey,,yes (digikey.com page 2026-11-09),,"2-circuit barrier terminal block, 12.7 mm pitch, PC-pin"
+"S1_Gate_Driver1,U9,U1",3,SI8274GB1-IS1R,SOIC-16_3.9x9.9mm_P1.27mm,SI8274GB1-IS1R,Skyworks Solutions Inc.,336-5554-1-ND,1683,,,DigiKey,https://www.skyworksinc.com/Products/Isolation/Si827x-Isolated-Gate-Drivers/Si8274GB1-IS1,yes (digikey.com page 2026-11-09),,
+"TP27,TP16,TP22,TP25,TP33,TP24,TP15,TP11,TP36,TP10,TP14,TP29,TP1,TP26,TP7,TP21,TP13,TP19,TP5,TP17,TP35,TP2,TP6,TP37,TP18,TP9,TP38,TP30,TP34",29,tp,TestPoint_THTPad_D2.0mm_Drill1.0mm,,,,,,,,,n/a,,bare 2 mm PTH test pad - nothing to order
+U2,1,TLV3601DBVR,TSOT-23-5_HandSoldering,TLV3601DBVR,Texas Instruments,296-TLV3601DBVRCT-ND,5188,,,DigiKey,https://www.ti.com/lit/gpn/tlv3601,yes (digikey.com page 2026-11-09),,SOT-23-5 part; U2 footprint is TSOT-23-5 (same land pattern)
+U3,1,TLV3601DBVR,SOT-23-5_HandSoldering,TLV3601DBVR,Texas Instruments,296-TLV3601DBVRCT-ND,5188,,,DigiKey,https://www.ti.com/lit/gpn/tlv3601,yes (digikey.com page 2026-11-09),,
+U4,1,TPS7A2550DRVR,DRV0006A-IPC_A,TPS7A2650DRVR,Texas Instruments,296-TPS7A2650DRVRCT-ND,5219,,,DigiKey,https://www.ti.com/lit/gpn/tps7a25,yes (digikey.com page 2026-11-09),,"SUBSTITUTE for TPS7A2550DRVR (DigiKey backordered to May 2027). TPS7A26 fixed-5V WSON-6 is pin-identical (OUT/NC/PG/EN/GND/IN, checked in both datasheets), 500 mA, Vin 2.4-18 V, needs >=1 uF out (C26 = 2.2 uF)"
+"U11,U10",2,74AHCT1G86,DBV5,SN74AHCT1G86DBVR,Texas Instruments,296-4714-1-ND,770,,,DigiKey,http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf,yes (digikey.com page 2026-11-09),,
+VCO1,1,SN74LV4046AD,D16,SN74LV4046ADR,Texas Instruments,296-21049-1-ND,2768,,,DigiKey,https://www.ti.com/lit/gpn/sn74lv4046a,yes (digikey.com page 2026-11-09),,cut-tape (DR) version of the SN74LV4046AD tube part; identical device
